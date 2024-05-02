@@ -112,7 +112,6 @@
                                     <option value="">Select Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
-                                    <option value="other">Other</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -192,16 +191,23 @@
         function showSuccessModal() {
             $('#successModal').modal('show');
         }
-
+    
         // Function to redirect to login page
         function redirectToLogin() {
             // Redirect to the login page, you should replace "login.html" with the actual URL of your login page
-            window.location.href = "DonorLogin.html";
+            window.location.href = "login.html";
         }
-
+    
         // Event listener for form submission
         $('#registrationForm').submit(function (event) {
             event.preventDefault(); // Prevent default form submission
+    
+            // Check if the terms and conditions checkbox is checked
+            if (!$('#terms').prop('checked')) {
+                alert('Please agree to the terms and conditions.');
+                return false; // Prevent form submission if terms are not agreed
+            }
+    
             // Perform your form validation and registration logic here
             // For demonstration purposes, let's assume registration is successful
             showSuccessModal(); // Show success modal
@@ -209,6 +215,7 @@
             this.reset();
         });
     </script>
+    
 </body>
 
 </html>
