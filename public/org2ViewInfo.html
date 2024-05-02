@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .hover-thin-line::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: auto;
+        right: 0;
+        width: 0; /* Initially hidden */
+        height: 2px;
+        background-color: black; /* Adjust the color as needed */
+        transition: width 0.3s ease; /* Smooth transition */
+      }
+      .hover-thin-line:hover::before {
+        width: 100%;
+        right: auto;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex justify-center items-center relative">
+    <div
+      style="position: fixed; bottom: 20px; left: 20px"
+      class="hover:brightness-125 transition-all ease-in-out swipe-button"
+    >
+      <a
+        href="organizationRequests.html"
+        style="
+          padding: 10px 20px;
+
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+        "
+        class="bg-black block"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="w-5 h-5"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M17 4.25A2.25 2.25 0 0 0 14.75 2h-5.5A2.25 2.25 0 0 0 7 4.25v2a.75.75 0 0 0 1.5 0v-2a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1-.75-.75v-2a.75.75 0 0 0-1.5 0v2A2.25 2.25 0 0 0 9.25 18h5.5A2.25 2.25 0 0 0 17 15.75V4.25Z"
+            clip-rule="evenodd"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M14 10a.75.75 0 0 0-.75-.75H3.704l1.048-.943a.75.75 0 1 0-1.004-1.114l-2.5 2.25a.75.75 0 0 0 0 1.114l2.5 2.25a.75.75 0 1 0 1.004-1.114l-1.048-.943h9.546A.75.75 0 0 0 14 10Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+    </div>
+    <style>
+      .swipe-button {
+        background-color: rgb(35, 189, 130); /* Initial color */
+        border: none;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .swipe-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start position off-screen */
+        width: 100%;
+        height: 100%;
+        background-color: white; /* Color to swipe to */
+        transition: left 0.5s ease; /* Animation duration */
+      }
+
+      .swipe-button:hover::before {
+        left: 100%; /* End position */
+      }
+    </style>
+    <div
+      class="absolute top-[10%] left-[15%] font-extrabold hover-thin-line"
+      style="font-size: 40px"
+    >
+      Organization Details
+    </div>
+    <div
+      class="bg-gray-300 shadow-lg w-[50%] mt-[10%] h-[60%] rounded-2xl absolute flex flex-col items-center gap-10"
+    >
+      <span class="font-bold mt-[5%] underline" style="font-size: 30px"
+        >Egy Help</span
+      >
+      <p class="text-center px-2" style="line-height: 40px">
+        A non-profit organization nestled in the heart of your community,
+        dedicated to brightening the lives of children in need. Located in a
+        cozy corner of town, your cheerful doors welcome donations of clothes,
+        toys, and various essentials, spreading rays of hope and joy to those
+        who need it most. With a team of passionate volunteers, you tirelessly
+        sort through contributions, ensuring each item finds its way to a
+        deserving child's hands. Sunshine Haven holds a special place in the
+        hearts of many, having touched the lives of over 500 children since its
+        inception five years ago. Your family includes children of all ages and
+        genders, each with their unique story, united by the warmth and comfort
+        you provide.
+      </p>
+
+      <div
+        class="flex bottom-[10%] justify-between w-[100%] absolute items-center"
+      >
+        <div class="flex justify-between items-center">
+          <a
+            href="OrgAccept.html"
+            class="w-24 ml-[5%] rounded text-center text-white hover:brightness-75"
+            style="background-color: rgb(35, 189, 130)"
+            ><div>Accept</div>
+          </a>
+          <a
+            href="DownloadPdf.html"
+            class="w-48 ml-[5%] rounded text-center bg-cyan-950 text-white hover:brightness-75"
+          >
+            <div class="flex gap-3 px-1 justify-center items-center">
+              Download PDF<span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    d="M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z"
+                  />
+                  <path
+                    d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </a>
+        </div>
+        <a
+          href="Reject.html"
+          class="w-24 h-6 mr-[5%] bg-red-700 rounded text-center text-white hover:brightness-75 flex justify-center items-center"
+          ><div>Reject</div></a
+        >
+      </div>
+    </div>
+  </body>
+</html>
