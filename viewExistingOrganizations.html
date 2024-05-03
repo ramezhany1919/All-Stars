@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .swipe-button {
+        overflow: hidden;
+      }
+      .swipe-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start position off-screen */
+        width: 100%;
+        height: 100%;
+        background-color: white; /* Color to swipe to */
+        transition: left 0.5s ease; /* Animation duration */
+      }
+
+      .swipe-button:hover::before {
+        left: 100%; /* End position */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="px-4 sm:px-6 lg:px-8">
+      <div class="sm:flex sm:items-center">
+        <div class="sm:flex-auto">
+          <h1 class="leading-6 text-gray-900 text-lg font-bold mt-9">
+            Organizations
+          </h1>
+        </div>
+      </div>
+      <div class="mt-8 flow-root">
+        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div
+            class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
+          >
+            <table class="min-w-full divide-y divide-gray-300">
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
+                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+                  >
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                  >
+                    Type
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                  >
+                    Status
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 bg-white">
+                <tr>
+                  <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
+                    <div class="flex items-center">
+                      <div class="h-11 w-11 flex-shrink-0">
+                        <img
+                          class="h-11 w-11 rounded-full"
+                          src="/public/images/R (1).jpeg"
+                          alt=""
+                        />
+                      </div>
+                      <div class="ml-4">
+                        <div class="font-medium text-gray-900">
+                          Handy Hands Organization
+                        </div>
+                        <div class="mt-1 text-gray-500">
+                          Handy.Hands@example.com
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <div class="text-gray-900 text-">Orphanage Donations</div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <span
+                      class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
+                      >Active</span
+                    >
+                  </td>
+
+                  <td
+                    class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
+                  >
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                      >Edit<span class="sr-only">, Lindsay Walton</span></a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
+                    <div class="flex items-center">
+                      <div class="h-11 w-11 flex-shrink-0">
+                        <img
+                          class="h-11 w-11 rounded-full"
+                          src="/public/images/OIP (1).jpeg"
+                          alt=""
+                        />
+                      </div>
+                      <div class="ml-4">
+                        <div class="font-medium text-gray-900">
+                          Egy Health Life
+                        </div>
+                        <div class="mt-1 text-gray-500">
+                          Egy.Health@example.com
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <div class="text-gray-900">Health Sector Donations</div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <span
+                      class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20"
+                      >InActive</span
+                    >
+                  </td>
+
+                  <td
+                    class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
+                  >
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                      >Edit</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
+                    <div class="flex items-center">
+                      <div class="h-11 w-11 flex-shrink-0">
+                        <img
+                          class="h-11 w-11 rounded-full"
+                          src="/public/images/How-to-Help-Children-Improve-Executive-Functioning-705x705.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <div class="ml-4">
+                        <div class="font-medium text-gray-900">
+                          Smart Life Organization
+                        </div>
+                        <div class="mt-1 text-gray-500">
+                          Smart.Life@example.com
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <div class="text-gray-900">Schoool Supplies Donations</div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <span
+                      class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
+                      >Active</span
+                    >
+                  </td>
+
+                  <td
+                    class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
+                  >
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                      >Edit</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
+                    <div class="flex items-center">
+                      <div class="h-11 w-11 flex-shrink-0">
+                        <img
+                          class="h-11 w-11 rounded-full"
+                          src="/public/images/Medical-Image-Management-Market-Website-New-1.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <div class="ml-4">
+                        <div class="font-medium text-gray-900">
+                          Healthy Life
+                        </div>
+                        <div class="mt-1 text-gray-500">
+                          Health.Life@example.com
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <div class="text-gray-900">Health Sector Organizations</div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <span
+                      class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
+                      >Active</span
+                    >
+                  </td>
+
+                  <td
+                    class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
+                  >
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                      >Edit</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
+                    <div class="flex items-center">
+                      <div class="h-11 w-11 flex-shrink-0">
+                        <img
+                          class="h-11 w-11 rounded-full"
+                          src="/public/images/OIP (2).jpeg"
+                          alt=""
+                        />
+                      </div>
+                      <div class="ml-4">
+                        <div class="font-medium text-gray-900">
+                          Better Thinking Organization
+                        </div>
+                        <div class="mt-1 text-gray-500">
+                          Better.Think@example.com
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <div class="text-gray-900">School Supplies Donations</div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <span
+                      class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
+                      >Active</span
+                    >
+                  </td>
+
+                  <td
+                    class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
+                  >
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                      >Edit</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="position: fixed; bottom: 20px; left: 20px"
+      class="hover:brightness-125 transition-all ease-in-out swipe-button"
+    >
+      <a
+        href="dashBoard.html"
+        style="
+          padding: 10px 20px;
+
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+        "
+        class="bg-black block"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="w-5 h-5"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M17 4.25A2.25 2.25 0 0 0 14.75 2h-5.5A2.25 2.25 0 0 0 7 4.25v2a.75.75 0 0 0 1.5 0v-2a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1-.75-.75v-2a.75.75 0 0 0-1.5 0v2A2.25 2.25 0 0 0 9.25 18h5.5A2.25 2.25 0 0 0 17 15.75V4.25Z"
+            clip-rule="evenodd"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M14 10a.75.75 0 0 0-.75-.75H3.704l1.048-.943a.75.75 0 1 0-1.004-1.114l-2.5 2.25a.75.75 0 0 0 0 1.114l2.5 2.25a.75.75 0 1 0 1.004-1.114l-1.048-.943h9.546A.75.75 0 0 0 14 10Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+    </div>
+  </body>
+</html>
