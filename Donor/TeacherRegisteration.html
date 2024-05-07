@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <title>Doctor Registration Form</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 20px;
+            padding: 12px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .custom-checkbox .custom-control-label::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 2px solid #007bff;
+            border-radius: 4px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .custom-checkbox .custom-control-label::after {
+            content: '\2714';
+            display: inline-block;
+            color: #007bff;
+            font-size: 16px;
+            font-weight: bold;
+            visibility: hidden;
+            vertical-align: middle;
+        }
+
+        .custom-checkbox input:checked~.custom-control-label::before {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .terms-link {
+            color: #007bff !important;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Teacher Registration
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" id="registrationForm">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName"
+                                    placeholder="Enter your first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName"
+                                    placeholder="Enter your last name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select class="form-control" id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Enter your email address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactNumber">Contact Number</label>
+                                <input type="tel" class="form-control" id="contactNumber" name="contactNumber"
+                                    placeholder="Enter your contact number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Enter your password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                    placeholder="Enter your address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="area">Area</label>
+                                <input type="text" class="form-control" id="area" name="area"
+                                    placeholder="Enter your area" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="governorate">Governorate</label>
+                                <select class="form-control" id="governorate" name="governorate" required>
+                                    <option value="">Select Governorate</option>
+                                    <option value="Cairo">Cairo</option>
+                                    <option value="Alexandria">Alexandria</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cv">Upload CV (PDF)</label>
+                                <input type="file" class="form-control-file" id="cv" name="cv" accept=".pdf" required>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="terms" unchecked>
+                                <label class="custom-control-label" for="terms" style="padding-top: 2px;">I agree to the <a href="#" class="terms-link">terms and conditions</a></label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block mt-4">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap modal for success -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Registration Successful!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Your account has been successfully created.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="redirectToLogin()">Close
+                        and
+                        Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap modal for terms and conditions alert -->
+    <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Please agree to the terms and conditions.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Function to show the success modal
+        function showSuccessModal() {
+            $('#successModal').modal('show');
+        }
+
+        // Function to show the terms and conditions modal
+        function showTermsModal() {
+            $('#termsModal').modal('show');
+        }
+
+        // Function to redirect to login page
+        function redirectToLogin() {
+            // Redirect to the login page, you should replace "login.html" with the actual URL of your login page
+            window.location.href = "TeacherLogin.html";
+        }
+
+        // Event listener for form submission
+        // Event listener for form submission
+        $('#registrationForm').submit(function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Check if the terms and conditions checkbox is checked
+            if (!$('#terms').prop('checked')) {
+                showTermsModal(); // Show terms and conditions modal
+                return false; // Prevent form submission if terms are not agreed
+            }
+
+            // Perform file upload validation
+            var cvFile = $('#cv').prop('files')[0];
+
+            if (!cvFile) {
+                alert("Please upload both license and CV files.");
+                return false;
+            }
+
+            // Perform your form validation and registration logic here
+            // For demonstration purposes, let's assume registration is successful
+            showSuccessModal(); // Show success modal
+            // Reset the form
+            this.reset();
+        });
+
+    </script>
+
+</body>
+
+</html>

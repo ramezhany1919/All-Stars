@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet">
+    <style>
+        img {
+            border-radius: 25%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('../images/DonorTypePic.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            margin-top: 150px;
+            text-align: center;
+        }
+
+        .loginRegister {
+            font-size: 48px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            font-style: italic;
+            animation: coolAnimation 2s ease infinite;
+        }
+
+        .contribute-now {
+            font-size: 40px;
+            color: #fcfcfc;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-style: italic;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-family: "Noto Serif TC", serif;
+            font-weight: 400;
+            font-style: normal;
+            margin-bottom: 50px;
+            animation: pulseAnimation 2s infinite alternate;
+        }
+
+        @keyframes pulseAnimation {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes coolAnimation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .image-container {
+            display: inline-block;
+            margin-right: 70px;
+            perspective: 1000px;
+
+        }
+
+        .image-flipper {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s linear;
+            border-radius: 25%;
+        }
+
+        .image-front
+        {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 25%;
+            transition: transform 1s linear;
+        }
+        
+        .image-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 25%;
+            transition: transform 1s linear;
+        }
+
+        .image-front {
+            backface-visibility: hidden;
+        }
+
+        .image-back {
+            transform: rotateY(180deg);
+            backface-visibility: hidden; /* Hide the back face initially */
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .image-back-content {
+            transform: rotateY(180deg);
+            font-weight: bold; /* Make the text bold */
+            font-size: 1.2em; /* Increase the size of the text */
+            
+        }
+
+        .image-container:hover .image-flipper {
+            transform: rotateY(180deg);
+        }
+
+        .image-container:hover .image-back {
+            backface-visibility: visible; /* Show the back face on hover */
+            transform: rotateY(0deg);
+        }
+
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contribute-now">Contribute Now ♡</div>
+        <div class="image-container">
+            <a class="image-link" href="./DonorLogin.html">
+                <div class="image-flipper">
+                    <img class="image-front" src="../images/Donor.jpg" alt="Donor Icon">
+                    <div class="image-back"><div class="image-back-content">Login/Register as a <span style="font-size:x-large bold; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ; color:beige;">Donor</span></div></div>
+
+                </div>
+            </a>
+        </div>
+        <div class="image-container">
+            <a class="image-link" href="./DoctorLogin.html">
+                <div class="image-flipper">
+                    <img class="image-front" src="../images/Doctor.jpg" alt="Doctor Icon">
+                    <div class="image-back"><div class="image-back-content">Login/Register as a <span style="font-size:x-large bold; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ; color:beige;">Doctor</span></div></div>
+                </div>
+            </a>
+        </div>
+        <div class="image-container">
+            <a class="image-link" href="./TeacherLogin.html">
+                <div class="image-flipper">
+                    <img class="image-front" src="../images/Teacher.webp" alt="Teacher Icon">
+                    <div class="image-back"><div class="image-back-content">Login/Register as a <span style="font-size:x-large bold; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ; color:beige;">Teacher</span></div></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+

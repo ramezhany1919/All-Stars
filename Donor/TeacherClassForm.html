@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinic Location Specification</title>
+  <style>
+
+    .form-container {
+      max-width: 600px; /* Adjust this to change the form width */
+      margin: 0 auto; /* This centers the form horizontally */
+      padding: 20px; /* This adds some space around the form */
+      background-color: #fff; /* This makes the form background white */
+      border-radius: 10px; /* This rounds the corners of the form */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* This adds a subtle shadow around the form */
+    }
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ededed; /* Assuming white background */
+    }
+
+    header {
+    color:rgb(66, 66, 66); /* White text for header */
+    text-align: center;
+    padding: 20px;
+    }
+
+    header h1 {
+    margin: 0;
+    }
+
+    main {
+    padding: 20px;
+    }
+
+    .form-group {
+    margin-bottom: 20px;
+    }
+
+    label {
+    display: block;
+    font-weight: bold;
+    color:rgb(66, 66, 66);  
+    font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+    width: 96%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Light grey border for inputs */
+    border-radius: 5px;
+    font-size: 16px; /* Assuming standard font size for inputs */
+    }
+
+    button {
+    background-color: #007bff; /* Blue background for button */
+    color: #fff; /* White text for button */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <main>
+    <div class="form-container">
+      <header>
+        <h1>Teacher Subject and Class Selection</h1>
+      </header>
+       <form id="teacher-form" class="teacher-form" onsubmit="return validateForm()">
+        <div class="form-group">
+        </div>
+        <div class="form-group">
+          <label for="Subject">Subject(s):</label>
+          <input type="text" id="Subject" name="area" placeholder="Enter subject(s)" required>
+        </div>
+        <div class="form-group">
+            <label for="proBonoCases">pro-bono classes:</label>
+            <input type="text" id="proBonoCases" name="proBonoCases" placeholder="Enter number of pro-bono classes" required>
+        </div>
+        <div id="map-container"></div>
+        <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+ </main>
+  
+  
+  <script>
+    
+
+    function validateForm() {
+      // Validate form fields before submission
+      const Subject = document.getElementById("Subject").value;
+      const proBonoCases = document.getElementById("proBonoCases").value;
+      
+      
+      if (!Subject||!proBonoCases) {
+        alert("Please fill in all fields.");
+        return false; // Prevent form submission
+      }
+
+      return true; // Allow form submission
+    }
+  </script>
+  </body>
+</html>
