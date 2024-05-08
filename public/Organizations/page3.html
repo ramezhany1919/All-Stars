@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fulfilled Donation Posts</title>
+    <link rel="stylesheet" href="/public/Organizations/style3.css" />
+  </head>
+  <body>
+    <style>
+      .swipe-button {
+        overflow: hidden;
+      }
+      .swipe-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start position off-screen */
+        width: 100%;
+        height: 100%;
+        background-color: white; /* Color to swipe to */
+        transition: left 0.5s ease; /* Animation duration */
+      }
+
+      .swipe-button:hover::before {
+        left: 100%; /* End position */
+      }
+    </style>
+
+    <div style="position: fixed; bottom: 20px; left: 20px" class="swipe-button">
+      <a
+        href="/public/Organizations/page1.html"
+        style="
+          padding: 10px 20px;
+
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          background-color: black;
+          display: block;
+        "
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          style="width: 20px; height: 20px"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M17 4.25A2.25 2.25 0 0 0 14.75 2h-5.5A2.25 2.25 0 0 0 7 4.25v2a.75.75 0 0 0 1.5 0v-2a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1-.75-.75v-2a.75.75 0 0 0-1.5 0v2A2.25 2.25 0 0 0 9.25 18h5.5A2.25 2.25 0 0 0 17 15.75V4.25Z"
+            clip-rule="evenodd"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M14 10a.75.75 0 0 0-.75-.75H3.704l1.048-.943a.75.75 0 1 0-1.004-1.114l-2.5 2.25a.75.75 0 0 0 0 1.114l2.5 2.25a.75.75 0 1 0 1.004-1.114l-1.048-.943h9.546A.75.75 0 0 0 14 10Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+    </div>
+    <div class="logo-container">
+      <img src="/public/images/logo.png" alt="Logo" />
+    </div>
+    <div class="container">
+      <h1>Fulfilled Donation Posts</h1>
+      <div class="donation-posts">
+        <div class="donation-post">
+          <form class="post-form">
+            <h2><strong>Donation Request:</strong> Clothes for Children</h2>
+            <div class="form-group">
+              <label for="category"><strong>Category:</strong></label>
+              <input type="text" name="category" value="Clothes" readonly />
+            </div>
+            <div class="form-group">
+              <label for="description"><strong>Description:</strong></label>
+              <textarea name="description" rows="3" readonly>
+We need clothes for children aged 5-10 years old.</textarea
+              >
+            </div>
+            <div class="form-group">
+              <label for="fulfilledBy"><strong>Fulfilled By:</strong></label>
+              <input
+                type="text"
+                name="fulfilledBy"
+                value="Tamer Mohsen"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <label for="contact"><strong>Contact:</strong></label>
+              <input
+                type="email"
+                name="contact"
+                value="tamoora@gmail.com"
+                readonly
+              />
+            </div>
+            <div class="actions">
+              <button type="button" class="delete-button">Delete Post</button>
+              <button type="button" class="update-button">Update Post</button>
+              <button
+                type="button"
+                class="contact-button"
+                data-email="tamoora@gmail.com"
+              >
+                Send Acknowledgement
+              </button>
+              <!-- Add confirm button -->
+              <button
+                type="button"
+                class="confirm-button"
+                style="display: none"
+              >
+                Confirm Update
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- Second donation post -->
+        <div class="donation-post">
+          <form class="post-form">
+            <h2>
+              <strong>Donation Request:</strong> Food for Homeless Shelter
+            </h2>
+            <div class="form-group">
+              <label for="category"><strong>Category:</strong></label>
+              <input type="text" name="category" value="Food" readonly />
+            </div>
+            <div class="form-group">
+              <label for="description"><strong>Description:</strong></label>
+              <textarea name="description" rows="3" readonly>
+We need non-perishable food items for our homeless shelter.</textarea
+              >
+            </div>
+            <div class="form-group">
+              <label for="fulfilledBy"><strong>Fulfilled By:</strong></label>
+              <input
+                type="text"
+                name="fulfilledBy"
+                value="Ahmed Younes"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <label for="contact"><strong>Contact:</strong></label>
+              <input
+                type="email"
+                name="contact"
+                value="younes@hotmail.com"
+                readonly
+              />
+            </div>
+            <div class="actions">
+              <button type="button" class="delete-button">Delete Post</button>
+              <button type="button" class="update-button">Update Post</button>
+              <button
+                type="button"
+                class="contact-button"
+                data-email="younes@hotmail.com"
+              >
+                Send Acknowledgement
+              </button>
+              <!-- Add confirm button -->
+              <button
+                type="button"
+                class="confirm-button"
+                style="display: none"
+              >
+                Confirm Update
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- Add more donation posts here -->
+      </div>
+    </div>
+    <!-- Add the following code -->
+
+    <!-- End of added code -->
+    <style>
+      .swipe-button {
+        overflow: hidden;
+      }
+      .swipe-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start position off-screen */
+        width: 100%;
+        height: 100%;
+        background-color: white; /* Color to swipe to */
+        transition: left 0.5s ease; /* Animation duration */
+      }
+      .swipe-button:hover::before {
+        left: 100%; /* End position */
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function togglePostUpdate(post) {
+          const form = post.querySelector(".post-form");
+          const formInputs = form.querySelectorAll("input, textarea");
+          formInputs.forEach((input) => {
+            input.readOnly = !input.readOnly;
+          });
+        }
+
+        const deleteButtons = document.querySelectorAll(".delete-button");
+        deleteButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            const donationPost = this.closest(".donation-post");
+            donationPost.remove();
+          });
+        });
+
+        const contactButtons = document.querySelectorAll(".contact-button");
+        contactButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            const donorEmail = this.getAttribute("data-email");
+            window.alert("Automated Acknowledgement email sent!");
+            // Remove the button from the post
+            button.remove();
+          });
+        });
+
+        const updateButtons = document.querySelectorAll(".update-button");
+        updateButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            const donationPost = this.closest(".donation-post");
+            togglePostUpdate(donationPost);
+            // Show confirm button
+            donationPost.querySelector(".confirm-button").style.display =
+              "block";
+          });
+        });
+
+        const confirmButtons = document.querySelectorAll(".confirm-button");
+        confirmButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            const donationPost = this.closest(".donation-post");
+            const form = donationPost.querySelector(".post-form");
+            const formInputs = form.querySelectorAll("input, textarea");
+            let updatedInfo = "";
+            formInputs.forEach((input) => {
+              updatedInfo += `${input.previousElementSibling.textContent} ${input.value}\n`;
+            });
+            alert(`Post updated successfully!\n\n${updatedInfo}`);
+            donationPost.remove();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
