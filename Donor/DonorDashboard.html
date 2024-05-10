@@ -1,0 +1,710 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Product Filter And Search</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            .btn-circle {
+                width: 200px;
+                border-color:rgb(85, 162, 85) ;
+                margin-bottom: 4px;
+            }
+
+            .svg {
+                height: 33px;
+            }
+
+            .btn-circle  {
+                margin-left: 20px;
+                margin-top: 17px;
+            }
+
+            .nav-item:hover {
+                background-color: #f8f9fa; /* Change background color on hover */
+                transform: scale(1.05); /* Apply a slight scale effect */
+                transition: transform 0.2s ease-in-out; /* Add smooth transition */
+            }
+
+            .main-content {
+                padding: 20px; /* Add padding for better appearance */
+            }
+
+            .card {
+                margin-bottom: 20px; /* Add space between cards */
+            }
+
+            .card {
+                max-width: 100%;
+                height: auto;
+            }
+
+            img {
+                margin-left: 2px;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .image-container {
+                margin-left: 15px;
+                display: flexbox;
+            }
+
+            .card-img-top {
+                align-items: center;
+                margin-top: 10px;
+                height: 100px;
+                width: 100px;
+            }
+
+            .hide {
+                display: none;
+            }
+            .h3
+            {
+                color:  #e6b741;
+                font-size: 28px; /* Font size */
+                font-weight: bold; /* Bold font */
+                font-family: Arial, sans-serif; /* Font family */
+            }
+            .form-control
+            {
+                border-color:rgb(85, 162, 85) ;
+                border-radius: 25px;
+            }
+           
+            .filter-container {
+                display: flex;
+                align-items: center;
+                gap: 10px; /* Adjust the gap between filters */
+            }
+            .card {
+            transition: transform 0.3s;
+            }
+            .card:hover {
+                transform: scale(1.1);
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 9999;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                max-width: 600px;
+                border-radius: 10px;
+                position: relative;
+                animation-name: zoom;
+                animation-duration: 0.6s;
+            }
+
+            .modal-content img {
+                width: 100%;
+                max-height: 300px;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            @keyframes zoom {
+                from {
+                    transform: scale(0)
+                }
+                to {
+                    transform: scale(1)
+                }
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            Categories
+                        </h3>
+                        <ul class="nav flex-column">
+                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('all')">All</button></li>
+                            <li class="nav-item"><button class="btn btn-light btn-circle " onclick="filterProduct('clothes')">Clothes<img src="./DonorImages/clothesSVG.svg" class="svg"></button></li>
+                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('toys')">Toys<img src="./DonorImages/toysSVG.svg" class="svg"></button></li>
+                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('food')">Food <img src="./DonorImages/foodSVG.svg" class="svg"></button></li>
+                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('medical-supplies')">Medical Supplies <img src="./DonorImages/medicalSVG.svg" class="svg"></button></li>
+                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('school-supplies')">School Supplies <img src="./DonorImages/schoolSVG.svg" class="svg"></button></li>
+                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('blood-donations')">Blood Donations <img src="./DonorImages/bloodSVG.svg" class="svg"></button></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- Main content -->
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <button style="background-color: rgb(246, 245, 216); border-radius: 10px; border-color:rgb(246, 245, 216) ;">
+                            <h1 class="h3">Product Filter & Search</h1>
+                        </button>
+                        <div class="btn-toolbar mb-2 mb-md-0">
+                            <div class="btn-group mr-2">
+                                <input id="searchInput" class="form-control" type="search" placeholder="Search" aria-label="Search" onkeyup="searchProducts()">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="additionalFilters"></div>
+                    <div class="main-content row" id="products"></div>
+                </main>
+            </div>
+        </div>
+<!-- Script -->
+<script>
+    let products = [
+            //clothes
+            {
+                productName: "Regular White T-Shirt",
+                category: "clothes",
+                age: "Adult",
+                gender: "Male",
+                season: "Spring",
+                image: "./DonorImages/shirtSVG.svg",
+            },
+            {
+                productName: "Beige Short Skirt",
+                category: "clothes",
+                age: "Child",
+                gender: "Female",
+                season: "Summer",
+                image: "./DonorImages/skirtSVG.svg",
+            },
+            {
+                productName: "Green Shoes",
+                category: "clothes",
+                age: "Adult",
+                gender: "Female",
+                season: "Fall",
+                image: "./DonorImages/shoesSVG.svg",
+            },
+            //toys
+            {
+                productName: "Teddy Bear",
+                category: "toys",
+                age: "3+",
+                gender: "Female",
+                categoryType: "Stuffed Toys",
+                image: "./DonorImages/teddySVG.svg",
+            },
+            {
+                productName: "Car",
+                category: "toys",
+                age: "6+",
+                gender: "Male",
+                categoryType: "Cars",
+                image: "./DonorImages/carSVG.svg",
+            },
+            // food
+            {
+                productName: "Apple",
+                category: "food",
+                categoryType: "Fruits and Vegetables",
+                image: "./DonorImages/appleSVG.svg",
+            },
+            {
+                productName: "Banana",
+                category: "food",
+                categoryType: "Fruits and Vegetables",
+                image: "./DonorImages/bananaSVG.svg",
+            },
+            // medical supplies
+            {
+                productName: "Band-Aids",
+                category: "medical-supplies",
+                categoryType: "Medical Devices",
+                image: "./DonorImages/bandaidSVG.svg"
+            },
+            {
+                productName: "Hand Sanitizer",
+                category: "medical-supplies",
+                categoryType: "Medical Equipment",
+                image: "./DonorImages/sanitizerSVG.svg",
+            },
+            // School Donations
+            {
+                productName: "Blue Pen",
+                category: "school-supplies",
+                categoryType: "Stationary",
+                typeOfItem:"Pen",
+                quantity:"3",
+                image: "./DonorImages/penSVG.svg",
+            },
+            {
+                productName: "Harry Potter",
+                category: "school-supplies",
+                categoryType: "Books",
+                name: "Harry Potter and the Philosopher's Stone",
+                author: "J.K. Rowling",
+                language: "English",
+                edition: "First",
+                summary: "Harry Potter, a young wizard, discovers his magical heritage on his eleventh birthday when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry. He learns that his parents were wizards killed by the dark wizard Lord Voldemort, who attempted to kill him too when he was a baby.",
+                image: "./DonorImages/bookSVG.svg",
+            },
+            // Adjusted blood donations data for testing filters
+            {
+                productName: "AB+",
+                category: "blood-donations",
+                bloodType: "AB+",
+                hospital: "Ain Shams University Hospital",
+                governorate: "Cairo",
+                area: "Nasr City",
+                image: "./DonorImages/bloodBagSVG.svg",
+            },
+            {
+                productName: "O-",
+                category: "blood-donations",
+                bloodType: "O-",
+                hospital: "Cairo University Hospital",
+                governorate: "Cairo",
+                area: "Giza",
+                image: "./DonorImages/bloodBagSVG.svg",
+            },
+            {
+                productName: "A+",
+                category: "blood-donations",
+                bloodType: "A+",
+                hospital: "Alexandria University Hospital",
+                governorate: "Alexandria",
+                area: "Mohandessin",
+                image: "./DonorImages/bloodBagSVG.svg",
+            },
+            {
+                productName: "B-",
+                category: "blood-donations",
+                bloodType: "B-",
+                hospital: "Mansoura University Hospital",
+                governorate: "Dakahlia",
+                area: "Mansoura",
+                image: "./DonorImages/bloodBagSVG.svg",
+            },
+            {
+                productName: "O+",
+                category: "blood-donations",
+                bloodType: "O+",
+                hospital: "Assiut University Hospital",
+                governorate: "Assiut",
+                area: "Assiut",
+                image: "./DonorImages/bloodBagSVG.svg",
+            }
+        ];
+
+
+    function filterProduct(value) {
+        let buttons = document.querySelectorAll(".btn-circle");
+        buttons.forEach((button) => {
+            button.classList.remove("active");
+        });
+        let activeButton = document.querySelector(`[onclick="filterProduct('${value}')"]`);
+        if (activeButton) activeButton.classList.add("active");
+        let elements = document.querySelectorAll(".card");
+        elements.forEach((element) => {
+            if (value === "all") {
+                element.classList.remove("hide");
+            } else {
+                if (element.classList.contains(value.toLowerCase())) {
+                    element.classList.remove("hide");
+                } else {
+                    element.classList.add("hide");
+                }
+            }
+        });
+
+        // Additional filter options
+        let additionalFilters = document.getElementById("additionalFilters");
+        if (additionalFilters) {
+            additionalFilters.innerHTML = ""; // Clear existing content
+
+            switch (value) {
+                case "clothes":
+                    createClothesFilters();
+                    break;
+                case "toys":
+                    createToysFilters();
+                    break;
+                case "food":
+                    createFoodFilters();
+                    break;
+                case "medical-supplies":
+                    createMedicalSuppliesFilters();
+                    break;
+                case "blood-donations":
+                    createBloodDonationsFilters();
+                    break;
+                case "school-supplies":
+                    createSchoolSuppliesFilters();
+                    break;
+                default:
+                    // No additional filters for other categories
+                    break;
+            }
+        }
+    }
+
+    function searchProducts() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let activeButton = document.querySelector(".btn-circle.active");
+        let selectedCategory = activeButton ? activeButton.innerText.toLowerCase() : null;
+
+        let elements = document.querySelectorAll(".card");
+        elements.forEach((element) => {
+            let productName = element.querySelector(".card-title").innerText.toLowerCase();
+            let category = element.classList.contains("clothes") ? "clothes" :
+                element.classList.contains("toys") ? "toys" :
+                element.classList.contains("food") ? "food" : "";
+
+            if (selectedCategory) {
+                if (selectedCategory === "all") {
+                    if (productName.includes(input) || category.includes(input)) {
+                        element.classList.remove("hide");
+                    } else {
+                        element.classList.add("hide");
+                    }
+                } else {
+                    if (productName.includes(input) && category === selectedCategory) {
+                        element.classList.remove("hide");
+                    } else {
+                        element.classList.add("hide");
+                    }
+                }
+            } else {
+                if (input === category || productName.includes(input)) {
+                    element.classList.remove("hide");
+                } else {
+                    element.classList.add("hide");
+                }
+            }
+        });
+    }
+
+    function createProductCards() {
+        let productsContainer = document.getElementById("products");
+        productsContainer.innerHTML = ""; // Clear existing content
+        products.forEach((product) => {
+            let card = document.createElement("div");
+            card.classList.add("card", "col-md-4", product.category.toLowerCase().replace(/\s+/g, '-'));
+
+            let imgContainer = document.createElement("div");
+            imgContainer.classList.add("image-container");
+
+            let image = document.createElement("img");
+            image.src = product.image;
+            image.classList.add("card-img-top");
+            imgContainer.appendChild(image);
+            card.appendChild(imgContainer);
+
+            let cardBody = document.createElement("div");
+            cardBody.classList.add("card-body");
+
+            let productName = document.createElement("h5");
+            productName.classList.add("card-title");
+            productName.innerText = product.productName;
+            cardBody.appendChild(productName);
+
+            let categoryInfo = document.createElement("p");
+            categoryInfo.classList.add("card-text");
+
+            // Adding category-specific information based on the product's category
+            if (product.category === "clothes") {
+                categoryInfo.innerHTML = `Age: ${product.age}<br>Gender: ${product.gender}<br>Season: ${product.season}`;
+            } else if (product.category === "toys") {
+                categoryInfo.innerHTML = `Age: ${product.age}<br>Gender: ${product.gender}<br>Category: ${product.categoryType}`;
+            } else if (product.category === "food") {
+                categoryInfo.innerHTML = `Type: ${product.categoryType}`;
+            } else if (product.category === "medical-supplies") {
+                categoryInfo.innerHTML = `Type: ${product.categoryType}`;
+            } else if (product.category === "school-supplies") {
+                categoryInfo.innerHTML = `Type: ${product.categoryType}`;
+            } else if (product.category === "blood-donations") {
+                categoryInfo.innerHTML = `Blood Type: ${product.bloodType}<br>Hospital: ${product.hospital}<br>Governorate: ${product.governorate}<br>Area: ${product.area}`;
+            }
+
+            cardBody.appendChild(categoryInfo);
+
+            let donateButton = document.createElement("a");
+            donateButton.href = "#";
+            donateButton.classList.add("btn", "btn-primary");
+            donateButton.style.backgroundColor = "rgb(85, 162, 85)";
+            donateButton.innerText = "Donate";
+            cardBody.appendChild(donateButton);
+
+            // Add event listener to the "Donate" button
+            donateButton.addEventListener('click', function() {
+                displayProductDetails(product.productName);
+            });
+
+
+            card.appendChild(cardBody);
+
+            productsContainer.appendChild(card);
+        });
+    }
+
+    function createClothesFilters() {
+        let additionalFilters = document.getElementById("additionalFilters");
+        if (additionalFilters) {
+            additionalFilters.innerHTML =
+                `<div class="filter-container">
+                    <select class="form-control" onchange="filterClothesByAge(this.value)">
+                        <option value="">Select Age</option>
+                        <option value="Adult">Adult</option>
+                        <option value="Child">Child</option>
+                    </select>
+                    <select class="form-control" onchange="filterClothesByGender(this.value)">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Unisex">Unisex</option>
+                    </select>
+                    <select class="form-control" onchange="filterClothesBySeason(this.value)">
+                        <option value="">Select Season</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Fall">Fall</option>
+                        <option value="Winter">Winter</option>
+                    </select>
+                </div>`;
+        }
+    }
+
+    function filterClothesByAge(age) {
+        let elements = document.querySelectorAll(".card.clothes");
+        elements.forEach((element) => {
+            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+            if (product && (age === "" || product.age === age)) {
+                element.classList.remove("hide");
+            } else {
+                element.classList.add("hide");
+            }
+        });
+    }
+
+    function filterClothesByGender(gender) {
+        let elements = document.querySelectorAll(".card.clothes");
+        elements.forEach((element) => {
+            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+            if (product && (gender === "" || product.gender === gender)) {
+                element.classList.remove("hide");
+            } else {
+                element.classList.add("hide");
+            }
+        });
+    }
+
+    function filterClothesBySeason(season) {
+        let elements = document.querySelectorAll(".card.clothes");
+        elements.forEach((element) => {
+            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+            if (product && (season === "" || product.season === season)) {
+                element.classList.remove("hide");
+            } else {
+                element.classList.add("hide");
+            }
+        });
+    }
+
+    function createToysFilters() {
+        let additionalFilters = document.getElementById("additionalFilters");
+        if (additionalFilters) {
+            additionalFilters.innerHTML =
+                `<div class="filter-container">
+                    <select class="form-control" onchange="filterToysByAge(this.value)">
+                        <option value="">Select Age</option>
+                        <option value="3+">3+</option>
+                        <option value="6+">6+</option>
+                    </select>
+                    <select class="form-control" onchange="filterToysByGender(this.value)">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Unisex">Unisex</option>
+                    </select>
+                    <select class="form-control" onchange="filterToysByCategory(this.value)">
+                        <option value="">Select Category</option>
+                        <option value="Stuffed Toys">Stuffed Toys</option>
+                        <option value="Cars">Cars</option>
+                    </select>
+                </div>`;
+        }
+    }
+
+    function filterToysByAge(age) {
+        let elements = document.querySelectorAll(".card.toys");
+        elements.forEach((element) => {
+            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+            if (product && (age === "" || product.age === age)) {
+                element.classList.remove("hide");
+            } else {
+                element.classList.add("hide");
+            }
+        });
+    }
+
+    function filterToysByGender(gender) {
+        let elements = document.querySelectorAll(".card.toys");
+        elements.forEach((element) => {
+            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+            if (product && (gender === "" || product.gender === gender)) {
+                element.classList.remove("hide");
+            } else {
+                element.classList.add("hide");
+            }
+        });
+    }
+
+    function filterToysByCategory(category) {
+        let elements = document.querySelectorAll(".card.toys");
+        elements.forEach((element) => {
+            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+            if (product && (category === "" || product.categoryType === category)) {
+                element.classList.remove("hide");
+            } else {
+                element.classList.add("hide");
+            }
+        });
+    }
+
+    function createFoodFilters() {
+        let additionalFilters = document.getElementById("additionalFilters");
+        if (additionalFilters) {
+            additionalFilters.innerHTML =
+                `<div class="filter-container">
+                    <select class="form-control" onchange="filterFoodByType(this.value)">
+                        <option value="">Select Type</option>
+                        <option value="Fruits and Vegetables">Fruits and Vegetables</option>
+                        <option value="Canned Foods">Canned Foods</option>
+                        <option value="Fresh Meals">Fresh Meals</option>
+                        <option value="Baked Goods">Baked Goods</option>
+                    </select>
+                </div>`;
+        }
+    }
+
+    function filterFoodByType(type) {
+        let elements = document.querySelectorAll(".card.food");
+        elements.forEach((element) => {
+            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+            if (product && (type === "" || product.categoryType === type)) {
+                element.classList.remove("hide");
+            } else {
+                element.classList.add("hide");
+            }
+        });
+    }
+
+    function createMedicalSuppliesFilters() {
+        let additionalFilters = document.getElementById("additionalFilters");
+        if (additionalFilters) {
+            additionalFilters.innerHTML =
+                `<div class="filter-container">
+                    <select class="form-control" onchange="filterMedicalSuppliesByType(this.value)">
+                        <option value="">Select Type</option>
+                        <option value="Medical Devices">Medical Devices</option>
+                        <option value="Medical Equipment">Medical Equipment</option>
+                        <option value="Medication">Medication</option>
+                    </select>
+                </div>`;
+        }
+    }
+
+    function filterMedicalSuppliesByType(type) {
+        let elements = document.querySelectorAll(".card.medical-supplies");
+        elements.forEach((element) => {
+            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+            if (product && (type === "" || product.categoryType === type)) {
+                element.classList.remove("hide");
+            } else {
+                element.classList.add("hide");
+            }
+        });
+    }
+
+    function createBloodDonationsFilters() {
+        let additionalFilters = document.getElementById("additionalFilters");
+        if (additionalFilters) {
+            additionalFilters.innerHTML =
+                `<div class="filter-container">
+                    <select class="form-control" id="hospitalFilter" onchange="filterBloodDonations()">
+                        <option value="">Select Hospital</option>
+                        <option value="Ain Shams University Hospital">Ain Shams University Hospital</option>
+                        <option value="Cairo University Hospital">Cairo University Hospital</option>
+                        <!-- Add more hospitals here if needed -->
+                    </select>
+                    <select class="form-control" id="bloodTypeFilter" onchange="filterBloodDonations()">
+                        <option value="">Select Blood Type</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="AB">AB</option>
+                        <option value="O">O</option>
+                    </select>
+                </div>`;
+        }
+    }
+
+    function filterBloodDonations() {
+        let hospital = document.getElementById("hospitalFilter").value;
+        let bloodType = document.getElementById("bloodTypeFilter").value;
+        let elements = document.querySelectorAll(".card.blood-donations");
+        elements.forEach((element) => {
+            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+            if (product &&
+                (hospital === "" || product.hospital === hospital) &&
+                (bloodType === "" || product.bloodType === bloodType)) {
+                element.classList.remove("hide");
+            } else {
+                element.classList.add("hide");
+            }
+        });
+    }
+
+    function createSchoolSuppliesFilters() {
+        // School supplies may not need additional filters
+        let additionalFilters = document.getElementById("additionalFilters");
+        if (additionalFilters) {
+            additionalFilters.innerHTML = "";
+        }   
+    }
+
+       
+        document.addEventListener('DOMContentLoaded', function () {
+            createProductCards(); // Call the function to create and display product cards
+        });
+
+    // Rest of your JavaScript code...
+</script>
+
+
+    
+</script>
+</body>
+</html>
