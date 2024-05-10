@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submission of Donation Posts</title>
+    <link rel="stylesheet" href="/public//Organizations/style2.css" />
+  </head>
+  <body>
+    <style>
+      .swipe-button {
+        overflow: hidden;
+      }
+      .swipe-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start position off-screen */
+        width: 100%;
+        height: 100%;
+        background-color: white; /* Color to swipe to */
+        transition: left 0.5s ease; /* Animation duration */
+      }
+
+      .swipe-button:hover::before {
+        left: 100%; /* End position */
+      }
+    </style>
+
+    <div style="position: fixed; bottom: 20px; left: 20px" class="swipe-button">
+      <a
+        href="/public/Organizations/page1.html"
+        style="
+          padding: 10px 20px;
+
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          background-color: black;
+          display: block;
+        "
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          style="width: 20px; height: 20px"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M17 4.25A2.25 2.25 0 0 0 14.75 2h-5.5A2.25 2.25 0 0 0 7 4.25v2a.75.75 0 0 0 1.5 0v-2a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1-.75-.75v-2a.75.75 0 0 0-1.5 0v2A2.25 2.25 0 0 0 9.25 18h5.5A2.25 2.25 0 0 0 17 15.75V4.25Z"
+            clip-rule="evenodd"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M14 10a.75.75 0 0 0-.75-.75H3.704l1.048-.943a.75.75 0 1 0-1.004-1.114l-2.5 2.25a.75.75 0 0 0 0 1.114l2.5 2.25a.75.75 0 1 0 1.004-1.114l-1.048-.943h9.546A.75.75 0 0 0 14 10Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+    </div>
+    <div class="logo-container">
+      <img src="/public/images/logo.png" alt="Logo" />
+    </div>
+    <div class="container">
+      <h2>Submission of Donation Posts</h2>
+      <form
+        action="submit_donation.php"
+        method="post"
+        onsubmit="handleSubmit(event)"
+      >
+        <div class="form-group">
+          <label for="category">Item Category:</label>
+          <select name="category" id="category">
+            <option value="clothes">Clothes</option>
+            <option value="toys">Toys</option>
+            <option value="food">Food</option>
+            <option value="medical">Medical Supplies</option>
+            <option value="school">School Supplies</option>
+            <option value="blood">Blood Donations</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="details">Details:</label>
+          <textarea
+            name="details"
+            id="details"
+            rows="5"
+            placeholder="Enter details about the donation post"
+          ></textarea>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <style>
+      .swipe-button {
+        overflow: hidden;
+      }
+      .swipe-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start position off-screen */
+        width: 100%;
+        height: 100%;
+        background-color: white; /* Color to swipe to */
+        transition: left 0.5s ease; /* Animation duration */
+      }
+      .swipe-button:hover::before {
+        left: 100%; /* End position */
+      }
+    </style>
+
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault(); // Prevent default form submission
+        alert("Post has been submitted.");
+        document.getElementById("details").value = ""; // Clear the textarea content
+      }
+    </script>
+  </body>
+</html>

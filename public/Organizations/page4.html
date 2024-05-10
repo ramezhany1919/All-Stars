@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organization Representative Information</title>
+    <link rel="stylesheet" href="/public/Organizations/style4.css" />
+  </head>
+  <body>
+    <style>
+      .swipe-button {
+        overflow: hidden;
+      }
+      .swipe-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start position off-screen */
+        width: 100%;
+        height: 100%;
+        background-color: white; /* Color to swipe to */
+        transition: left 0.5s ease; /* Animation duration */
+      }
+
+      .swipe-button:hover::before {
+        left: 100%; /* End position */
+      }
+    </style>
+
+    <div style="position: fixed; bottom: 20px; left: 20px" class="swipe-button">
+      <a
+        href="/public/Organizations/page1.html"
+        style="
+          padding: 10px 20px;
+
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          background-color: black;
+          display: block;
+        "
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          style="width: 20px; height: 20px"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M17 4.25A2.25 2.25 0 0 0 14.75 2h-5.5A2.25 2.25 0 0 0 7 4.25v2a.75.75 0 0 0 1.5 0v-2a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1-.75-.75v-2a.75.75 0 0 0-1.5 0v2A2.25 2.25 0 0 0 9.25 18h5.5A2.25 2.25 0 0 0 17 15.75V4.25Z"
+            clip-rule="evenodd"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M14 10a.75.75 0 0 0-.75-.75H3.704l1.048-.943a.75.75 0 1 0-1.004-1.114l-2.5 2.25a.75.75 0 0 0 0 1.114l2.5 2.25a.75.75 0 1 0 1.004-1.114l-1.048-.943h9.546A.75.75 0 0 0 14 10Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+    </div>
+    <div class="logo-container">
+      <img src="/public/images/logo.png" alt="Logo" />
+    </div>
+
+    <style>
+      .swipe-button {
+        overflow: hidden;
+      }
+      .swipe-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start position off-screen */
+        width: 100%;
+        height: 100%;
+        background-color: white; /* Color to swipe to */
+        transition: left 0.5s ease; /* Animation duration */
+      }
+
+      .swipe-button:hover::before {
+        left: 100%; /* End position */
+      }
+    </style>
+    <div class="container">
+      <h1>Organization Representative Profile Information</h1>
+      <div class="info">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" value="Ahmed" />
+        <button class="update-btn">Update</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      <div class="info">
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" value="Marzaban" />
+        <button class="update-btn">Update</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      <div class="info">
+        <label for="gender">Gender:</label>
+        <input type="text" id="gender" value="Male" />
+        <button class="update-btn">Update</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      <div class="info">
+        <label for="email">Email:</label>
+        <input type="email" id="email" value="marzaban@yahoo.com" />
+        <button class="update-btn">Update</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      <div class="info">
+        <label for="password">Password:</label>
+        <input type="password" id="password" value="********" />
+        <button class="update-btn">Update</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      <div class="info">
+        <label for="contact">Contact Number:</label>
+        <input type="text" id="contact" value="1234567890" />
+        <button class="update-btn">Update</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      <div class="info">
+        <label for="org-name">Organization Name:</label>
+        <input type="text" id="org-name" value="Tiba Org" />
+        <button class="update-btn">Update</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      <div class="info">
+        <label for="org-type">Organization Type:</label>
+        <input type="text" id="org-type" value="Non-profit" />
+        <button class="update-btn">Update</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      <div class="info">
+        <label for="org-address">Organization Address:</label>
+        <input type="text" id="org-address" value="Nasr City" />
+        <button class="update-btn">Update</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      <div class="info">
+        <label for="area">Area:</label>
+        <input type="text" id="area" value="Cairo" />
+        <button class="update-btn">Update</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+      <div class="info">
+        <label for="governorate">Governorate:</label>
+        <input type="text" id="governorate" value="Cairo" />
+        <button class="update-btn">Update</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+    </div>
+    <script>
+      const updateButtons = document.querySelectorAll(".update-btn");
+      const deleteButtons = document.querySelectorAll(".delete-btn");
+
+      updateButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const input = button.parentElement.querySelector("input");
+          input.removeAttribute("readonly");
+          input.focus();
+        });
+      });
+
+      deleteButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const input = button.parentElement.querySelector("input");
+          input.value = "";
+        });
+      });
+    </script>
+  </body>
+</html>
