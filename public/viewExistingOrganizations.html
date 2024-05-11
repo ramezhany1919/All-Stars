@@ -29,6 +29,29 @@
     <div class="flex w-full justify-end">
       <img src="/public/images/logo.png" class="w-16" alt="" />
     </div>
+    <div class="w-full flex justify-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="w-5 h-5 absolute left-[33%] top-[8%] text-gray-600"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z"
+          clip-rule="evenodd"
+        />
+      </svg>
+
+      <input
+        class="flex items-center gap-3 w-[35%] bg-gray-100 py-2 rounded-lg shadow-md placeholder-gray-800 pl-10 placeholder:font-extralight outline-none"
+        ;
+        type="text"
+        placeholder="search all organizations"
+        id="searchInput"
+        oninput="searchTable()"
+      />
+    </div>
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
@@ -66,7 +89,7 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 bg-white">
-                <tr>
+                <tr id="Handy Hands">
                   <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
                     <div class="flex items-center">
                       <div class="h-11 w-11 flex-shrink-0">
@@ -104,7 +127,7 @@
                     >
                   </td>
                 </tr>
-                <tr>
+                <tr id="EGY HEALTH LIFE">
                   <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
                     <div class="flex items-center">
                       <div class="h-11 w-11 flex-shrink-0">
@@ -142,7 +165,7 @@
                     >
                   </td>
                 </tr>
-                <tr>
+                <tr id="Smart Life Organization">
                   <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
                     <div class="flex items-center">
                       <div class="h-11 w-11 flex-shrink-0">
@@ -180,7 +203,7 @@
                     >
                   </td>
                 </tr>
-                <tr>
+                <tr id="Healthy Life">
                   <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
                     <div class="flex items-center">
                       <div class="h-11 w-11 flex-shrink-0">
@@ -218,7 +241,7 @@
                     >
                   </td>
                 </tr>
-                <tr>
+                <tr id="Better Thinking">
                   <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
                     <div class="flex items-center">
                       <div class="h-11 w-11 flex-shrink-0">
@@ -295,5 +318,32 @@
         </svg>
       </a>
     </div>
+    <script>
+      function searchTable() {
+        // Get the input element where the user types the search query
+        var input = document.getElementById("searchInput");
+
+        // Convert the user's input to uppercase for case-insensitive matching
+        var filter = input.value.toUpperCase();
+
+        // Get all table rows
+        var rows = document.getElementsByTagName("tr");
+
+        // Iterate over each table row
+        for (var i = 0; i < rows.length; i++) {
+          // Get the id of the current table row and convert it to uppercase
+          var rowId = rows[i].id.toUpperCase();
+
+          // Check if the search query is found in the id of the current row
+          if (rowId.indexOf(filter) > -1) {
+            // If the search query is found, display the row
+            rows[i].style.display = "";
+          } else {
+            // If the search query is not found, hide the row
+            rows[i].style.display = "none";
+          }
+        }
+      }
+    </script>
   </body>
 </html>
