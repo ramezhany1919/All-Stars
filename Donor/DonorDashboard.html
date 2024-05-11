@@ -6,12 +6,22 @@
         <!-- Bootstrap CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
         <style>
-            .btn-circle {
+            .btn-circle  {
                 width: 200px;
                 border-color:rgb(85, 162, 85) ;
                 margin-bottom: 4px;
             }
-
+            #quantity
+            {
+                border-color:rgb(85, 162, 85) ;
+                border-radius: 25px;
+            }
+            #proceedBtn
+            {
+                border-color:rgb(85, 162, 85) ;
+                border-radius: 25px;
+                text-align: center;
+            }
             .svg {
                 height: 33px;
             }
@@ -139,187 +149,121 @@
                     transform: scale(1)
                 }
             }
+            /* Updated CSS for the modal */
+            .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            }
 
+            .modal-content {
+            background-color: #fefefe;
+            margin: 1% auto; /* Center modal vertically and horizontally */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            }
 
+            .close {
+            color: #aaa;
+            float: right;
+            font-size: 24px;
+            }
+
+            .close:hover,
+            .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            }
+
+            /* Add some styles for the modal content */
+            #modalContent {
+            text-align: center;
+            }
+
+            #modalContent h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            }
+
+            #modalContent img {
+            width: 80%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            }
+
+            #modalContent p {
+            font-size: 16px;
+            line-height: 1.6;
+            }
+            
         </style>
     </head>
     <body>
-        <div class="container-fluid">
-            <div class="row">
-                <!-- Sidebar -->
-                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                    <div class="sidebar-sticky">
-                        <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                            Categories
-                        </h3>
-                        <ul class="nav flex-column">
-                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('all')">All</button></li>
-                            <li class="nav-item"><button class="btn btn-light btn-circle " onclick="filterProduct('clothes')">Clothes<img src="./DonorImages/clothesSVG.svg" class="svg"></button></li>
-                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('toys')">Toys<img src="./DonorImages/toysSVG.svg" class="svg"></button></li>
-                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('food')">Food <img src="./DonorImages/foodSVG.svg" class="svg"></button></li>
-                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('medical-supplies')">Medical Supplies <img src="./DonorImages/medicalSVG.svg" class="svg"></button></li>
-                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('school-supplies')">School Supplies <img src="./DonorImages/schoolSVG.svg" class="svg"></button></li>
-                            <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('blood-donations')">Blood Donations <img src="./DonorImages/bloodSVG.svg" class="svg"></button></li>
-                        </ul>
-                    </div>
-                </nav>
-                <!-- Main content -->
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <button style="background-color: rgb(246, 245, 216); border-radius: 10px; border-color:rgb(246, 245, 216) ;">
-                            <h1 class="h3">Product Filter & Search</h1>
-                        </button>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                            <div class="btn-group mr-2">
-                                <input id="searchInput" class="form-control" type="search" placeholder="Search" aria-label="Search" onkeyup="searchProducts()">
-                            </div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        Categories
+                    </h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('all')">All</button></li>
+                        <li class="nav-item"><button class="btn btn-light btn-circle " onclick="filterProduct('clothes')">Clothes<img src="./DonorImages/clothesSVG.svg" class="svg"></button></li>
+                        <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('toys')">Toys<img src="./DonorImages/toysSVG.svg" class="svg"></button></li>
+                        <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('food')">Food <img src="./DonorImages/foodSVG.svg" class="svg"></button></li>
+                        <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('medical-supplies')">Medical Supplies <img src="./DonorImages/medicalSVG.svg" class="svg"></button></li>
+                        <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('school-supplies')">School Supplies <img src="./DonorImages/schoolSVG.svg" class="svg"></button></li>
+                        <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('blood-donations')">Blood Donations <img src="./DonorImages/bloodSVG.svg" class="svg"></button></li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- Main content -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <button style="background-color: rgb(246, 245, 216); border-radius: 10px; border-color:rgb(246, 245, 216) ;">
+                        <h1 class="h3">Product Filter & Search</h1>
+                    </button>
+                    
+                    <div class="btn-toolbar mb-2 mb-md-0 row">
+                        <div class="col-sm">
+                            <input id="searchInput" class="form-control" type="search" placeholder="Search" aria-label="Search" onkeyup="searchProducts()">
+                        </div>
+                        <div class="col-sm">
+                            <img src="../Donor/DonorImages/profileSVG.svg" onclick="toggleDropdown()" class="svg" style="cursor: pointer;">
                         </div>
                     </div>
-                    <div id="additionalFilters"></div>
-                    <div class="main-content row" id="products"></div>
-                </main>
-            </div>
+                    
+                    
+                </div>
+                <div id="additionalFilters"></div>
+                <div class="main-content row" id="products"></div>
+            </main>
         </div>
+    </div>
+    <!-- Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+</body>
+
 <!-- Script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    let products = [
-            //clothes
-            {
-                productName: "Regular White T-Shirt",
-                category: "clothes",
-                age: "Adult",
-                gender: "Male",
-                season: "Spring",
-                image: "./DonorImages/shirtSVG.svg",
-            },
-            {
-                productName: "Beige Short Skirt",
-                category: "clothes",
-                age: "Child",
-                gender: "Female",
-                season: "Summer",
-                image: "./DonorImages/skirtSVG.svg",
-            },
-            {
-                productName: "Green Shoes",
-                category: "clothes",
-                age: "Adult",
-                gender: "Female",
-                season: "Fall",
-                image: "./DonorImages/shoesSVG.svg",
-            },
-            //toys
-            {
-                productName: "Teddy Bear",
-                category: "toys",
-                age: "3+",
-                gender: "Female",
-                categoryType: "Stuffed Toys",
-                image: "./DonorImages/teddySVG.svg",
-            },
-            {
-                productName: "Car",
-                category: "toys",
-                age: "6+",
-                gender: "Male",
-                categoryType: "Cars",
-                image: "./DonorImages/carSVG.svg",
-            },
-            // food
-            {
-                productName: "Apple",
-                category: "food",
-                categoryType: "Fruits and Vegetables",
-                image: "./DonorImages/appleSVG.svg",
-            },
-            {
-                productName: "Banana",
-                category: "food",
-                categoryType: "Fruits and Vegetables",
-                image: "./DonorImages/bananaSVG.svg",
-            },
-            // medical supplies
-            {
-                productName: "Band-Aids",
-                category: "medical-supplies",
-                categoryType: "Medical Devices",
-                image: "./DonorImages/bandaidSVG.svg"
-            },
-            {
-                productName: "Hand Sanitizer",
-                category: "medical-supplies",
-                categoryType: "Medical Equipment",
-                image: "./DonorImages/sanitizerSVG.svg",
-            },
-            // School Donations
-            {
-                productName: "Blue Pen",
-                category: "school-supplies",
-                categoryType: "Stationary",
-                typeOfItem:"Pen",
-                quantity:"3",
-                image: "./DonorImages/penSVG.svg",
-            },
-            {
-                productName: "Harry Potter",
-                category: "school-supplies",
-                categoryType: "Books",
-                name: "Harry Potter and the Philosopher's Stone",
-                author: "J.K. Rowling",
-                language: "English",
-                edition: "First",
-                summary: "Harry Potter, a young wizard, discovers his magical heritage on his eleventh birthday when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry. He learns that his parents were wizards killed by the dark wizard Lord Voldemort, who attempted to kill him too when he was a baby.",
-                image: "./DonorImages/bookSVG.svg",
-            },
-            // Adjusted blood donations data for testing filters
-            {
-                productName: "AB+",
-                category: "blood-donations",
-                bloodType: "AB+",
-                hospital: "Ain Shams University Hospital",
-                governorate: "Cairo",
-                area: "Nasr City",
-                image: "./DonorImages/bloodBagSVG.svg",
-            },
-            {
-                productName: "O-",
-                category: "blood-donations",
-                bloodType: "O-",
-                hospital: "Cairo University Hospital",
-                governorate: "Cairo",
-                area: "Giza",
-                image: "./DonorImages/bloodBagSVG.svg",
-            },
-            {
-                productName: "A+",
-                category: "blood-donations",
-                bloodType: "A+",
-                hospital: "Alexandria University Hospital",
-                governorate: "Alexandria",
-                area: "Mohandessin",
-                image: "./DonorImages/bloodBagSVG.svg",
-            },
-            {
-                productName: "B-",
-                category: "blood-donations",
-                bloodType: "B-",
-                hospital: "Mansoura University Hospital",
-                governorate: "Dakahlia",
-                area: "Mansoura",
-                image: "./DonorImages/bloodBagSVG.svg",
-            },
-            {
-                productName: "O+",
-                category: "blood-donations",
-                bloodType: "O+",
-                hospital: "Assiut University Hospital",
-                governorate: "Assiut",
-                area: "Assiut",
-                image: "./DonorImages/bloodBagSVG.svg",
-            }
-        ];
-
-
     function filterProduct(value) {
         let buttons = document.querySelectorAll(".btn-circle");
         buttons.forEach((button) => {
@@ -372,40 +316,38 @@
     }
 
     function searchProducts() {
-        let input = document.getElementById("searchInput").value.toLowerCase();
-        let activeButton = document.querySelector(".btn-circle.active");
-        let selectedCategory = activeButton ? activeButton.innerText.toLowerCase() : null;
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let activeButton = document.querySelector(".btn-circle.active");
+    let selectedCategory = activeButton ? activeButton.innerText.toLowerCase() : null;
 
-        let elements = document.querySelectorAll(".card");
-        elements.forEach((element) => {
-            let productName = element.querySelector(".card-title").innerText.toLowerCase();
-            let category = element.classList.contains("clothes") ? "clothes" :
-                element.classList.contains("toys") ? "toys" :
-                element.classList.contains("food") ? "food" : "";
+    let elements = document.querySelectorAll(".card"); // Select all cards
+    elements.forEach((element) => {
+        let productName = element.querySelector(".card-title").innerText.toLowerCase();
+        let category = element.classList.contains("clothes") ? "clothes" :
+            element.classList.contains("toys") ? "toys" :
+            element.classList.contains("food") ? "food" : "";
 
-            if (selectedCategory) {
-                if (selectedCategory === "all") {
-                    if (productName.includes(input) || category.includes(input)) {
-                        element.classList.remove("hide");
-                    } else {
-                        element.classList.add("hide");
-                    }
+        if (input || selectedCategory) { // Check if input or category is selected
+            if (selectedCategory === "all" || !selectedCategory) {
+                if (productName.includes(input) || category.includes(input)) {
+                    element.classList.remove("hide");
                 } else {
-                    if (productName.includes(input) && category === selectedCategory) {
-                        element.classList.remove("hide");
-                    } else {
-                        element.classList.add("hide");
-                    }
+                    element.classList.add("hide");
                 }
             } else {
-                if (input === category || productName.includes(input)) {
+                if (productName.includes(input) && category === selectedCategory) {
                     element.classList.remove("hide");
                 } else {
                     element.classList.add("hide");
                 }
             }
-        });
-    }
+        } else { // If input and category are empty, show all cards
+            element.classList.remove("hide");
+        }
+    });
+}
+
+
 
     function createProductCards() {
         let productsContainer = document.getElementById("products");
@@ -438,7 +380,7 @@
             if (product.category === "clothes") {
                 categoryInfo.innerHTML = `Age: ${product.age}<br>Gender: ${product.gender}<br>Season: ${product.season}`;
             } else if (product.category === "toys") {
-                categoryInfo.innerHTML = `Age: ${product.age}<br>Gender: ${product.gender}<br>Category: ${product.categoryType}`;
+                categoryInfo.innerHTML = `Age: ${product.age}<br>Gender: ${product.gender}<br>Category: ${product.type}`;
             } else if (product.category === "food") {
                 categoryInfo.innerHTML = `Type: ${product.categoryType}`;
             } else if (product.category === "medical-supplies") {
@@ -471,128 +413,93 @@
     }
 
     function createClothesFilters() {
-        let additionalFilters = document.getElementById("additionalFilters");
-        if (additionalFilters) {
-            additionalFilters.innerHTML =
-                `<div class="filter-container">
-                    <select class="form-control" onchange="filterClothesByAge(this.value)">
-                        <option value="">Select Age</option>
-                        <option value="Adult">Adult</option>
-                        <option value="Child">Child</option>
-                    </select>
-                    <select class="form-control" onchange="filterClothesByGender(this.value)">
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Unisex">Unisex</option>
-                    </select>
-                    <select class="form-control" onchange="filterClothesBySeason(this.value)">
-                        <option value="">Select Season</option>
-                        <option value="Spring">Spring</option>
-                        <option value="Summer">Summer</option>
-                        <option value="Fall">Fall</option>
-                        <option value="Winter">Winter</option>
-                    </select>
-                </div>`;
+    let additionalFilters = document.getElementById("additionalFilters");
+    if (additionalFilters) {
+        additionalFilters.innerHTML =
+            `<div class="filter-container">
+                <select class="form-control" onchange="filterClothes()">
+                    <option value="">Select Age</option>
+                    <option value="Adult">Adult</option>
+                    <option value="Child">Child</option>
+                </select>
+                <select class="form-control" onchange="filterClothes()">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Unisex">Unisex</option>
+                </select>
+                <select class="form-control" onchange="filterClothes()">
+                    <option value="">Select Season</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Fall">Fall</option>
+                    <option value="Winter">Winter</option>
+                </select>
+            </div>`;
+    }
+}
+
+function filterClothes() {
+    let age = document.querySelector(".filter-container select:nth-child(1)").value;
+    let gender = document.querySelector(".filter-container select:nth-child(2)").value;
+    let season = document.querySelector(".filter-container select:nth-child(3)").value;
+
+    let elements = document.querySelectorAll(".card.clothes");
+    elements.forEach((element) => {
+        let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+        if (product && (age === "" || product.age === age) && (gender === "" || product.gender === gender) && (season === "" || product.season === season)) {
+            element.classList.remove("hide");
+        } else {
+            element.classList.add("hide");
         }
-    }
+    });
+}
 
-    function filterClothesByAge(age) {
-        let elements = document.querySelectorAll(".card.clothes");
-        elements.forEach((element) => {
-            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
-            if (product && (age === "" || product.age === age)) {
-                element.classList.remove("hide");
-            } else {
-                element.classList.add("hide");
-            }
-        });
-    }
 
-    function filterClothesByGender(gender) {
-        let elements = document.querySelectorAll(".card.clothes");
-        elements.forEach((element) => {
-            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
-            if (product && (gender === "" || product.gender === gender)) {
-                element.classList.remove("hide");
-            } else {
-                element.classList.add("hide");
-            }
-        });
+function createToysFilters() {
+    let additionalFilters = document.getElementById("additionalFilters");
+    if (additionalFilters) {
+        additionalFilters.innerHTML =
+            `<div class="filter-container">
+                <select class="form-control" onchange="filterToys()">
+                    <option value="">Select Age</option>
+                    <option value="3+">3+</option>
+                    <option value="6+">6+</option>
+                </select>
+                <select class="form-control" onchange="filterToys()">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Unisex">Unisex</option>
+                </select>
+                <select class="form-control" onchange="filterToys()">
+                    <option value="">Select Category</option>
+                    <option value="Board Games">Board Games</option>
+                    <option value="Stuffed Toys">Stuffed Toys</option>
+                    <option value="Dolls">Dolls</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Cars">Cars</option>
+                    <option value="Outdoor">Outdoor</option>
+                </select>
+            </div>`;
     }
+}
 
-    function filterClothesBySeason(season) {
-        let elements = document.querySelectorAll(".card.clothes");
-        elements.forEach((element) => {
-            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
-            if (product && (season === "" || product.season === season)) {
-                element.classList.remove("hide");
-            } else {
-                element.classList.add("hide");
-            }
-        });
-    }
+function filterToys() {
+    let age = document.querySelector(".filter-container select:nth-child(1)").value;
+    let gender = document.querySelector(".filter-container select:nth-child(2)").value;
+    let category = document.querySelector(".filter-container select:nth-child(3)").value;
 
-    function createToysFilters() {
-        let additionalFilters = document.getElementById("additionalFilters");
-        if (additionalFilters) {
-            additionalFilters.innerHTML =
-                `<div class="filter-container">
-                    <select class="form-control" onchange="filterToysByAge(this.value)">
-                        <option value="">Select Age</option>
-                        <option value="3+">3+</option>
-                        <option value="6+">6+</option>
-                    </select>
-                    <select class="form-control" onchange="filterToysByGender(this.value)">
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Unisex">Unisex</option>
-                    </select>
-                    <select class="form-control" onchange="filterToysByCategory(this.value)">
-                        <option value="">Select Category</option>
-                        <option value="Stuffed Toys">Stuffed Toys</option>
-                        <option value="Cars">Cars</option>
-                    </select>
-                </div>`;
+    let elements = document.querySelectorAll(".card.toys");
+    elements.forEach((element) => {
+        let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+        if (product && (age === "" || product.age === age) && (gender === "" || product.gender === gender) && (category === "" || product.type === category)) {
+            element.classList.remove("hide");
+        } else {
+            element.classList.add("hide");
         }
-    }
-
-    function filterToysByAge(age) {
-        let elements = document.querySelectorAll(".card.toys");
-        elements.forEach((element) => {
-            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
-            if (product && (age === "" || product.age === age)) {
-                element.classList.remove("hide");
-            } else {
-                element.classList.add("hide");
-            }
-        });
-    }
-
-    function filterToysByGender(gender) {
-        let elements = document.querySelectorAll(".card.toys");
-        elements.forEach((element) => {
-            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
-            if (product && (gender === "" || product.gender === gender)) {
-                element.classList.remove("hide");
-            } else {
-                element.classList.add("hide");
-            }
-        });
-    }
-
-    function filterToysByCategory(category) {
-        let elements = document.querySelectorAll(".card.toys");
-        elements.forEach((element) => {
-            let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
-            if (product && (category === "" || product.categoryType === category)) {
-                element.classList.remove("hide");
-            } else {
-                element.classList.add("hide");
-            }
-        });
-    }
+    });
+}
 
     function createFoodFilters() {
         let additionalFilters = document.getElementById("additionalFilters");
@@ -622,64 +529,63 @@
         });
     }
 
-    function createMedicalSuppliesFilters() {
+        function createMedicalSuppliesFilters() {
         let additionalFilters = document.getElementById("additionalFilters");
         if (additionalFilters) {
             additionalFilters.innerHTML =
                 `<div class="filter-container">
-                    <select class="form-control" onchange="filterMedicalSuppliesByType(this.value)">
+                    <select class="form-control" id="typeSelect" onchange="filterMedicalSupplies()">
                         <option value="">Select Type</option>
                         <option value="Medical Devices">Medical Devices</option>
                         <option value="Medical Equipment">Medical Equipment</option>
                         <option value="Medication">Medication</option>
                     </select>
+                    <select class="form-control" id="useSelect" style="display: none;" onchange="filterMedicalSupplies()">
+                        <option value="">Select Medical Use</option>
+                        <option value="Pain Relief">Pain Relief</option>
+                        <option value="Allergy Relief">Allergy Relief</option>
+                        // Add more options as needed
+                    </select>
                 </div>`;
         }
     }
 
-    function filterMedicalSuppliesByType(type) {
+    function filterMedicalSupplies() {
+        let type = document.getElementById("typeSelect").value;
+        let use = document.getElementById("useSelect").value;
+
+        // Show or hide the medical use select based on the type
+        document.getElementById("useSelect").style.display = (type === "Medication") ? "block" : "none";
+
         let elements = document.querySelectorAll(".card.medical-supplies");
         elements.forEach((element) => {
             let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
-            if (product && (type === "" || product.categoryType === type)) {
+            if (product && (type === "" || product.categoryType === type) && (use === "" || product.use === use)) {
                 element.classList.remove("hide");
             } else {
                 element.classList.add("hide");
             }
         });
     }
-
-    function createBloodDonationsFilters() {
+    function createSchoolSuppliesFilters() {
         let additionalFilters = document.getElementById("additionalFilters");
         if (additionalFilters) {
             additionalFilters.innerHTML =
                 `<div class="filter-container">
-                    <select class="form-control" id="hospitalFilter" onchange="filterBloodDonations()">
-                        <option value="">Select Hospital</option>
-                        <option value="Ain Shams University Hospital">Ain Shams University Hospital</option>
-                        <option value="Cairo University Hospital">Cairo University Hospital</option>
-                        <!-- Add more hospitals here if needed -->
-                    </select>
-                    <select class="form-control" id="bloodTypeFilter" onchange="filterBloodDonations()">
-                        <option value="">Select Blood Type</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="AB">AB</option>
-                        <option value="O">O</option>
+                    <select class="form-control" id="typeSelect" onchange="filterSchoolSupplies(this.value)">
+                        <option value="">Select Type</option>
+                        <option value="Stationary">Stationary</option>
+                        <option value="Books">Books</option>
                     </select>
                 </div>`;
         }
     }
 
-    function filterBloodDonations() {
-        let hospital = document.getElementById("hospitalFilter").value;
-        let bloodType = document.getElementById("bloodTypeFilter").value;
-        let elements = document.querySelectorAll(".card.blood-donations");
+    function filterSchoolSupplies(value) {
+        let elements = document.querySelectorAll(".card.school-supplies");
         elements.forEach((element) => {
             let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
-            if (product &&
-                (hospital === "" || product.hospital === hospital) &&
-                (bloodType === "" || product.bloodType === bloodType)) {
+            if (product && (value === "" || product.categoryType === value)) {
                 element.classList.remove("hide");
             } else {
                 element.classList.add("hide");
@@ -687,24 +593,378 @@
         });
     }
 
-    function createSchoolSuppliesFilters() {
-        // School supplies may not need additional filters
-        let additionalFilters = document.getElementById("additionalFilters");
-        if (additionalFilters) {
-            additionalFilters.innerHTML = "";
-        }   
-    }
 
-       
+            function createBloodDonationsFilters() {
+            let additionalFilters = document.getElementById("additionalFilters");
+            if (additionalFilters) {
+                additionalFilters.innerHTML =
+                    `<div class="filter-container">
+                        <select class="form-control" id="hospitalFilter" onchange="filterBloodDonations()">
+                            <option value="">Select Hospital</option>
+                            <option value="Ain Shams University Hospital">Ain Shams University Hospital</option>
+                            <option value="Cairo University Hospital">Cairo University Hospital</option>
+                            <option value="Assiut University Hospital">Assiut University Hospital</option>
+                        </select>
+                        <select class="form-control" id="governorateFilter" onchange="filterBloodDonations()">
+                            <option value="">Select Governorate</option>
+                            <option value="Cairo">Cairo</option>
+                            <option value="Asiut">Asuit</option>
+                        </select>
+                        <select class="form-control" id="areaFilter" onchange="filterBloodDonations()">
+                            <option value="">Select Area</option>
+                            <option value="Nasr City">Nasr City</option>
+                            <option value="Giza">Giza</option>
+                            <option value="Mohandessin">Mohandessin</option>
+                        </select>
+                    </div>`;
+            }
+        }
+
+        function filterBloodDonations() {
+            let hospital = document.getElementById("hospitalFilter").value;
+            let governorate = document.getElementById("governorateFilter").value;
+            let area = document.getElementById("areaFilter").value;
+
+            let elements = document.querySelectorAll(".card.blood-donations");
+            elements.forEach((element) => {
+                let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+                if (product && (hospital === "" || product.hospital === hospital) && (governorate === "" || product.governorate === governorate) &&(area === "" || product.area === area)) {
+                    element.classList.remove("hide");
+                } else {
+                    element.classList.add("hide");
+                }
+            });
+        }
+        function displayProductDetails(productName) {
+            let product = products.find((item) => item.productName === productName);
+            let modalContent = document.getElementById("modalContent");
+            if (product.category === "clothes") {
+                modalContent.innerHTML = `
+                    <h2>${product.productName}</h2>
+                    <img src="${product.image}" alt="${product.productName}">
+                    <p><strong>Type:</strong> ${product.type}</p>
+                    <p><strong>Age:</strong> ${product.age}</p>
+                    <p><strong>Gender:</strong> ${product.gender}</p>
+                    <p><strong>Season:</strong> ${product.season}</p>
+                    <p><strong>Material:</strong> ${product.material}</p>
+                    <p><strong>Quantity:</strong> ${product.quantity}</p>
+                    <div class="quantity-selection">
+                        <label for="quantity">Select Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                        <button id="proceedBtn">Proceed</button>
+                    </div>
+                `;
+                
+            } 
+            else if(product.category==="school-supplies" && product.categoryType==="Stationary")
+            {
+                modalContent.innerHTML = `
+                    <h2>${product.productName}</h2>
+                    <img src="${product.image}" alt="${product.productName}">
+                    <p><strong>Type:</strong> ${product.type}</p>
+                    <p><strong>Quantity:</strong> ${product.quantity}</p>
+                    <div class="quantity-selection">
+                        <label for="quantity">Select Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                        <button id="proceedBtn">Proceed</button>
+                    </div>
+                `;
+                
+            }
+            else if(product.category==="school-supplies" && product.categoryType==="Books")
+            {
+                modalContent.innerHTML = `
+                    <h2>${product.name}</h2>
+                    <img src="${product.bookImage}" alt="${product.productName}">
+                    <p><strong>Author:</strong> ${product.author}</p>
+                    <p><strong>Language:</strong> ${product.language}</p>
+                    <p><strong>Edition:</strong> ${product.edition}</p>
+                    <p><strong>Summary:</strong> ${product.summary}</p>
+                    <p><strong>Quantity:</strong> ${product.quantity}</p>
+                    <div class="quantity-selection">
+                        <label for="quantity">Select Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                        <button id="proceedBtn">Proceed</button>
+                    </div>
+                `;
+                
+            }
+            else if(product.category==="toys")
+            {
+                modalContent.innerHTML = `
+                    <h2>${product.productName}</h2>
+                    <img src="${product.image}" alt="${product.productName}">
+                    <p><strong>Type:</strong> ${product.type}</p>
+                    <p><strong>Age:</strong> ${product.age}</p>
+                    <p><strong>Gender:</strong> ${product.gender}</p>
+                    <p><strong>Cateogry:</strong> ${product.type}</p>
+                    <p><strong>Quantity:</strong> ${product.quantity}</p>
+                    <div class="quantity-selection">
+                        <label for="quantity">Select Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                        <button id="proceedBtn">Proceed</button>
+                    </div>
+                `; 
+            }
+            else if(product.category==="food")
+            {
+                modalContent.innerHTML = `
+                    <h2>${product.productName}</h2>
+                    <img src="${product.image}" alt="${product.productName}">
+                    <p><strong>Quantity:</strong> ${product.quantity}</p>
+                    <div class="quantity-selection">
+                        <label for="quantity">Select Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                        <button id="proceedBtn">Proceed</button>
+                    </div>
+                `; 
+            }
+            else if(product.category==="medical-supplies")
+            {
+                modalContent.innerHTML = `
+                    <h2>${product.productName}</h2>
+                    <img src="${product.image}" alt="${product.productName}">
+                    <p><strong>Type:</strong> ${product.categoryType}</p>
+                    <p><strong>Use:</strong> ${product.use}</p>
+                    <p><strong>Quantity:</strong> ${product.quantity}</p>
+                    <div class="quantity-selection">
+                        <label for="quantity">Select Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                        <button id="proceedBtn">Proceed</button>
+                    </div>
+                `; 
+            }
+            else if(product.category==="blood-donations")
+            {
+                modalContent.innerHTML = `
+                    <h2>${product.productName}</h2>
+                    <img src="${product.image}" alt="${product.productName}">
+                    <p><strong>Patient:</strong> ${product.patient}</p>
+                    <p><strong>Hosptial:</strong> ${product.hospital}</p>
+                    <p><strong>Area:</strong> ${product.area}</p>
+                    <p><strong>Governorate:</strong> ${product.governorate}</p>
+                    <p><strong>Address:</strong> ${product.address}</p>
+                    <div id="map" style="height: 400px;"></div>
+                `;
+                initMap(product.latitude,product.longitude);
+            }
+            
+            
+            openModal();
+        }
+        // Function to initialize Google Maps
+            function initMap(latitude, longitude) {
+                // Create a new map centered at the hospital's location
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    center: { lat: latitude, lng: longitude },
+                    zoom: 15, // Adjust the zoom level as needed
+                });
+
+                // Add a marker at the hospital's location
+                new google.maps.Marker({
+                    position: { lat: latitude, lng: longitude },
+                    map,
+                    title: "Hospital Location",
+                });
+            }
+            
+        let products = [
+            //clothes
+            {
+                productName: "Regular White T-Shirt",
+                type:"T-shirt",
+                category: "clothes",
+                age: "Adult",
+                gender: "Male",
+                season: "Spring",
+                material:"Cotton",
+                quantity:"2",
+                image: "./DonorImages/shirtSVG.svg",
+            },
+            {
+                productName: "Beige Short Skirt",
+                category: "clothes",
+                type:"Skirt",
+                age: "Child",
+                gender: "Female",
+                season: "Summer",
+                material:"Cotton",
+                quantity:"1",
+                image: "./DonorImages/skirtSVG.svg",
+            },
+            {
+                productName: "Green Shoes",
+                category: "clothes",
+                type:"Shoes",
+                age: "Adult",
+                gender: "Female",
+                season: "Fall",
+                quantity:"1",
+                material:"Textile",
+                image: "./DonorImages/shoesSVG.svg"
+            },
+            //toys
+            {
+                productName: "Teddy Bear",
+                category: "toys",
+                age: "3+",
+                gender: "Female",
+                type: "Stuffed Toys",
+                quantity:"3",
+                image: "./DonorImages/teddySVG.svg",
+            },
+            {
+                productName: "Car",
+                category: "toys",
+                age: "6+",
+                gender: "Male",
+                type: "Cars",
+                quantity:"2",
+                image: "./DonorImages/carSVG.svg",
+            },
+            {
+                productName: "Barbie Doll",
+                category: "toys",
+                age: "6+",
+                gender: "Female",
+                type: "Dolls",
+                quantity:"2",
+                image: "./DonorImages/dollSVG.svg",
+            },
+            // food
+            {
+                productName: "Apple",
+                category: "food",
+                categoryType: "Fruits and Vegetables",
+                quantity:"2 KG",
+                image: "./DonorImages/appleSVG.svg",
+            },
+            {
+                productName: "Banana",
+                category: "food",
+                categoryType: "Fruits and Vegetables",
+                quantity:"1 KG",
+                image: "./DonorImages/bananaSVG.svg",
+            },
+            {
+                productName: "Bread",
+                category: "food",
+                categoryType: "Baked Goods",
+                quantity:"2",
+                image:"./DonorImages/breadSVG.svg",
+            },
+            // medical supplies
+            {
+                productName: "Band-Aids",
+                category: "medical-supplies",
+                categoryType: "Medical Equipment",
+                image: "./DonorImages/bandaidSVG.svg",
+                quantity:"2"
+            },
+            {
+                productName: "Hand Sanitizer",
+                category: "medical-supplies",
+                categoryType: "Medical Equipment",
+                image: "./DonorImages/sanitizerSVG.svg",
+                quantity:"1"
+            },
+            {
+                productName: "Panadol",
+                category: "medical-supplies",
+                categoryType: "Medication",
+                use:"Pain Relief",
+                image: "./DonorImages/panadolSVG.svg",
+                quantity:"3"
+            },
+            {
+                productName: "Cardiogram ",
+                category: "medical-supplies",
+                categoryType: "Medical Devices",
+                image: "./DonorImages/cardiogramSVG.svg",
+                quantity:"2"
+            },
+            // School Donations
+            {
+                productName: "Blue Pen",
+                category: "school-supplies",
+                categoryType: "Stationary",
+                type:"Pen",
+                quantity:"3",
+                image: "./DonorImages/penSVG.svg",
+            },
+            {
+                productName: "Harry Potter",
+                category: "school-supplies",
+                categoryType: "Books",
+                name: "Harry Potter and the Philosopher's Stone",
+                author: "J.K. Rowling",
+                language: "English",
+                edition: "First",
+                summary: "Harry Potter, a young wizard, discovers his magical heritage on his eleventh birthday when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry. He learns that his parents were wizards killed by the dark wizard Lord Voldemort, who attempted to kill him too when he was a baby.",
+                image: "./DonorImages/bookSVG.svg",
+                bookImage:"./DonorImages/harrypotter.jpg",
+                quantity:"1"
+            },
+            // Adjusted blood donations data for testing filters
+            {
+                productName: "AB+",
+                category: "blood-donations",
+                bloodType: "AB+",
+                patient: "Mohamed",
+                hospital: "Ain Shams University Hospital",
+                governorate: "Cairo",
+                area: "Nasr City",
+                address: "12 Nasr City",
+                latitude: 30.072,
+                longitude: 31.285,
+                image: "./DonorImages/bloodBagSVG.svg",
+            },
+            {
+                productName: "O-",
+                category: "blood-donations",
+                patient: "Ramez",
+                bloodType: "O-",
+                hospital: "Cairo University Hospital",
+                governorate: "Cairo",
+                area: "Giza",
+                address: "12 Nasr City",
+                latitude: 30.033,
+                longitude: 31.233,
+                image: "./DonorImages/bloodBagSVG.svg",
+            },
+            {
+                productName: "A+",
+                patient: "Shady",
+                category: "blood-donations",
+                bloodType: "A+",
+                hospital: "Asuit University Hospital",
+                governorate: "Asuit",
+                area: "Mohandessin",
+                address: "12 Nasr City",
+                latitude: 27.180,
+                longitude: 31.183,
+                image: "./DonorImages/bloodBagSVG.svg",
+            }
+
+        ];
+
+    
+
+        function openModal() {
+            document.getElementById("productModal").style.display = "block";
+            }
+
+            function closeModal() {
+            document.getElementById("productModal").style.display = "none";
+            }
+
         document.addEventListener('DOMContentLoaded', function () {
             createProductCards(); // Call the function to create and display product cards
         });
 
-    // Rest of your JavaScript code...
+  
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-zFE67oCxfz0P7BSMdnFxLIpUM5pPl9Q&callback=initMap" async defer></script>
 
-
-    
-</script>
 </body>
 </html>
