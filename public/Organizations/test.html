@@ -51,30 +51,8 @@
     </script>
   </head>
   <body>
-    <div class="logo-container">
-      <img src="/public/images/logo.png" alt="Logo" />
-    </div>
-    <div class="container">
-      <h1>Welcome to Organization Donation Website</h1>
-      <div class="buttons">
-        <a href="/public/Organizations/page2.html" class="button"
-          >Submit New Donation Post</a
-        >
-        <a href="/public/Organizations/page3.html" class="button"
-          >View Fulfilled Donation Posts</a
-        >
-        <a href="/public/Organizations/page4.html" class="button"
-          >Update/Delete Account Information</a
-        >
-        <a href="/public/Organizations/page5.html" class="button"
-          >View Pro-Bono Donor Details</a
-        >
-        <a href="/public/Organizations/page6.html" class="button"
-          >View Available Slots for Donation Dropoff</a
-        >
-      </div>
-      <div id="map" style="height: 400px; margin-top: 20px"></div>
-    </div>
+    <div id="map" style="height: 400px; margin-top: 20px"></div>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const deleteButtons = document.querySelectorAll(".delete-button");
