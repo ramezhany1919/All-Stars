@@ -206,10 +206,30 @@
             font-size: 16px;
             line-height: 1.6;
             }
+            #notification {
+                visibility: hidden;
+                min-width: 250px;
+                background-color: #e6b741;
+                color: #fff;
+                text-align: center;
+                border-radius: 25px;
+                padding: 16px;
+                position: fixed;
+                z-index: 2;
+                left: 40%;
+                top: 30px;
+                font-size: 17px;
+                transition: top 0.5s ease;
+            }
+            .show {
+                visibility: visible !important;
+                top: 80px !important;
+            }
             
         </style>
     </head>
     <body>
+    <div id="notification"></div>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
@@ -259,6 +279,12 @@
             <div id="modalContent"></div>
         </div>
     </div>
+    <footer class="footer bg-dark text-light py-4">
+        <div class="container text-center">
+            <span class="text-muted">Contact us at: <a href="mailto:contact@sth.com" class="text-light">contact@sth.com</a></span>
+        </div>
+    </footer>
+    
 </body>
 
 <!-- Script -->
@@ -390,20 +416,35 @@
             } else if (product.category === "blood-donations") {
                 categoryInfo.innerHTML = `Blood Type: ${product.bloodType}<br>Hospital: ${product.hospital}<br>Governorate: ${product.governorate}<br>Area: ${product.area}`;
             }
-
             cardBody.appendChild(categoryInfo);
-
-            let donateButton = document.createElement("a");
-            donateButton.href = "#";
-            donateButton.classList.add("btn", "btn-primary");
-            donateButton.style.backgroundColor = "rgb(85, 162, 85)";
-            donateButton.innerText = "Donate";
-            cardBody.appendChild(donateButton);
-
-            // Add event listener to the "Donate" button
-            donateButton.addEventListener('click', function() {
-                displayProductDetails(product.productName);
-            });
+                 
+            if(product.category!="blood-donations")
+            {
+                let donateButton = document.createElement("a");
+                donateButton.href = "#";
+                donateButton.classList.add("btn", "btn-primary");
+                donateButton.style.backgroundColor = "rgb(85, 162, 85)";
+                donateButton.innerText = "Donate";
+                cardBody.appendChild(donateButton);
+                // Add event listener to the "Donate" button
+                donateButton.addEventListener('click', function() {
+                    displayProductDetails(product.productName);
+                });
+                
+            }
+            else
+            {
+                let donateButton = document.createElement("a");
+                donateButton.href = "#";
+                donateButton.classList.add("btn", "btn-primary");
+                donateButton.style.backgroundColor = "rgb(85, 162, 85)";
+                donateButton.innerText = "View More Info!";
+                cardBody.appendChild(donateButton);
+                // Add event listener to the "Donate" button
+                donateButton.addEventListener('click', function() {
+                    displayProductDetails(product.productName);
+                });
+            }
 
 
             card.appendChild(cardBody);
@@ -651,9 +692,18 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
-                `;
+                    <div>
+                        <select class="form-control" id="areaFilter" >
+                                <option >Choose Required Method Of Transportation</option>
+                                <option>Truck</option>
+                                <option>Motorcycle</option>
+                                <option>Car</option>
+                        </select>
+                        <
+                    <div>
+                `;  
                 
             } 
             else if(product.category==="school-supplies" && product.categoryType==="Stationary")
@@ -666,7 +716,7 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
                 `;
                 
@@ -684,7 +734,7 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
                 `;
                 
@@ -702,7 +752,7 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
                 `; 
             }
@@ -715,7 +765,7 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
                 `; 
             }
@@ -730,7 +780,7 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
                 `; 
             }
@@ -751,6 +801,16 @@ function filterToys() {
             
             
             openModal();
+        }
+        function donationSuccess()
+        {
+            let notification = document.getElementById("notification");
+            notification.innerHTML = "Donation Request Submitted Successfully!";
+            notification.classList.add("notification", "show");
+            setTimeout(function() {
+                notification.classList.remove("show");
+            }, 4000);
+            closeModal();
         }
         // Function to initialize Google Maps
             function initMap(latitude, longitude) {

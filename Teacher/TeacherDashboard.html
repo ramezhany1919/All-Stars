@@ -6,6 +6,23 @@
         <!-- Bootstrap CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
         <style>
+            .notification {
+                position: fixed;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #4CAF50;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 5px;
+                z-index: 9999;
+                transition: top 0.5s ease-in-out;
+            }
+
+            .show {
+                top: 20px;
+            }
+
             .btn-circle  {
                 width: 200px;
                 border-color:rgb(85, 162, 85) ;
@@ -152,15 +169,15 @@
             }
             /* Updated CSS for the modal */
             .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.6);
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0,0,0,0.6);
             }
 
             .modal-content {
@@ -211,13 +228,43 @@
                 border-color: rgb(218, 199, 89); /* Change border color to gold */
             }
 
-            .pro-bono img {
-                height: 33px;
+            img {
+                height: 45px;
             }
+            #fulfill
+            {
+                margin-top: 10px;
+                border-color: #e6b741 ; 
+                border-radius: 25px;
+                display: flexbox;
+                align-items: center;
+                text-align: center;
+            }
+            #notification {
+                visibility: hidden;
+                min-width: 250px;
+                background-color: #e6b741;
+                color: #fff;
+                text-align: center;
+                border-radius: 25px;
+                padding: 16px;
+                position: fixed;
+                z-index: 2;
+                left: 50%;
+                top: 30px;
+                font-size: 17px;
+                transition: top 0.5s ease;
+            }
+            .show {
+                visibility: visible !important;
+                top: 80px !important;
+            }
+
 
         </style>
     </head>
     <body>
+    <div id="notification"></div>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
@@ -235,7 +282,7 @@
                         <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('school-supplies')">School Supplies <img src="./TeacherImages/schoolSVG.svg" class="svg"></button></li>
                         <li class="nav-item"><button class="btn btn-light btn-circle" onclick="filterProduct('blood-donations')">Blood Donations <img src="./TeacherImages/bloodSVG.svg" class="svg"></button></li>
                         <li class="nav-item">
-                            <button class="btn btn-light btn-circle pro-bono" onclick="filterProduct('Pro-Bono')">Pro-Bono Cases 
+                            <button class="btn btn-light btn-circle pro-bono" onclick="filterProduct('pro-bono')">Pro-Bono Cases 
                                 <img src="./TeacherImages/teachingSVG.svg" class="pro-bono">
                             </button>
                         </li>
@@ -321,6 +368,8 @@
                 case "school-supplies":
                     createSchoolSuppliesFilters();
                     break;
+                case"pro-bono":
+                    createProBonoDonationsFilters();
                 default:
                     // No additional filters for other categories
                     break;
@@ -403,22 +452,52 @@
             } else if (product.category === "blood-donations") {
                 categoryInfo.innerHTML = `Blood Type: ${product.bloodType}<br>Hospital: ${product.hospital}<br>Governorate: ${product.governorate}<br>Area: ${product.area}`;
             }
+            else if (product.category === "pro-bono") {
+                categoryInfo.innerHTML = `<br>Governorate: ${product.governorate}<br>Area: ${product.area}`;
+            }
 
             cardBody.appendChild(categoryInfo);
 
-            let donateButton = document.createElement("a");
-            donateButton.href = "#";
-            donateButton.classList.add("btn", "btn-primary");
-            donateButton.style.backgroundColor = "rgb(85, 162, 85)";
-            donateButton.innerText = "Donate";
-            cardBody.appendChild(donateButton);
-
-            // Add event listener to the "Donate" button
-            donateButton.addEventListener('click', function() {
-                displayProductDetails(product.productName);
-            });
-
-
+            if(product.category=="pro-bono")
+            {   
+                let donateButton = document.createElement("a");
+                donateButton.href = "#";
+                donateButton.classList.add("btn", "btn-primary");
+                donateButton.style.backgroundColor = "rgb(218, 199, 89)";
+                donateButton.innerText = "Apply";
+                cardBody.appendChild(donateButton);
+                // Add event listener to the "Donate" button
+                donateButton.addEventListener('click', function() {
+                    displayProductDetails(product.productName);
+                });
+            }       
+            else if(product.category!="blood-donations")
+            {
+                let donateButton = document.createElement("a");
+                donateButton.href = "#";
+                donateButton.classList.add("btn", "btn-primary");
+                donateButton.style.backgroundColor = "rgb(85, 162, 85)";
+                donateButton.innerText = "Donate";
+                cardBody.appendChild(donateButton);
+                // Add event listener to the "Donate" button
+                donateButton.addEventListener('click', function() {
+                    displayProductDetails(product.productName);
+                });
+                
+            }
+            else
+            {
+                let donateButton = document.createElement("a");
+                donateButton.href = "#";
+                donateButton.classList.add("btn", "btn-primary");
+                donateButton.style.backgroundColor = "rgb(85, 162, 85)";
+                donateButton.innerText = "View More Info!";
+                cardBody.appendChild(donateButton);
+                // Add event listener to the "Donate" button
+                donateButton.addEventListener('click', function() {
+                    displayProductDetails(product.productName);
+                });
+            }
             card.appendChild(cardBody);
 
             productsContainer.appendChild(card);
@@ -593,6 +672,7 @@ function filterToys() {
                 </div>`;
         }
     }
+    
 
     function filterSchoolSupplies(value) {
         let elements = document.querySelectorAll(".card.school-supplies");
@@ -607,7 +687,7 @@ function filterToys() {
     }
 
 
-            function createBloodDonationsFilters() {
+        function createBloodDonationsFilters() {
             let additionalFilters = document.getElementById("additionalFilters");
             if (additionalFilters) {
                 additionalFilters.innerHTML =
@@ -648,6 +728,47 @@ function filterToys() {
                 }
             });
         }
+        function createProBonoDonationsFilters() {
+            let additionalFilters = document.getElementById("additionalFilters");
+            if (additionalFilters) {
+                additionalFilters.innerHTML =
+                    `<div class="filter-container">
+                        <select class="form-control" id="subject" onchange="filterProBonoDonations()">
+                            <option value="">Select Subject</option>
+                            <option value="English">English</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Math">Math</option>
+                        </select>
+                        <select class="form-control" id="governorateFilter2" onchange="filterProBonoDonations()">
+                            <option value="">Select Governorate</option>
+                            <option value="Cairo">Cairo</option>
+                            <option value="Asiut">Asuit</option>
+                        </select>
+                        <select class="form-control" id="areaFilter2" onchange="filterProBonoDonations()">
+                            <option value="">Select Area</option>
+                            <option value="Nasr City">Nasr City</option>
+                            <option value="Giza">Giza</option>
+                            <option value="Mohandessin">Mohandessin</option>
+                        </select>
+                    </div>`;
+            }
+        }
+
+        function filterProBonoDonations() {
+            let subject = document.getElementById("subject").value;
+            let governorate = document.getElementById("governorateFilter2").value;
+            let area = document.getElementById("areaFilter2").value;
+
+            let elements = document.querySelectorAll(".card.pro-bono");
+            elements.forEach((element) => {
+                let product = products.find((item) => item.productName === element.querySelector(".card-title").innerText);
+                if (product && (subject === "" || product.productName === subject) && (governorate === "" || product.governorate === governorate) &&(area === "" || product.area === area)) {
+                    element.classList.remove("hide");
+                } else {
+                    element.classList.add("hide");
+                }
+            });
+        }
         function displayProductDetails(productName) {
             let product = products.find((item) => item.productName === productName);
             let modalContent = document.getElementById("modalContent");
@@ -664,7 +785,7 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
                 `;
                 
@@ -679,7 +800,7 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
                 `;
                 
@@ -697,7 +818,7 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
                 `;
                 
@@ -715,7 +836,7 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
                 `; 
             }
@@ -728,7 +849,7 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
                 `; 
             }
@@ -743,7 +864,7 @@ function filterToys() {
                     <div class="quantity-selection">
                         <label for="quantity">Select Quantity:</label>
                         <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn">Proceed</button>
+                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
                     </div>
                 `; 
             }
@@ -761,10 +882,48 @@ function filterToys() {
                 `;
                 initMap(product.latitude,product.longitude);
             }
+            else if(product.category==="pro-bono")
+            {
+                modalContent.innerHTML = `
+                    <div id="notification"></div>
+                    <h2>${product.productName}</h2>
+                    <img src="${product.image}" alt="${product.productName}">
+                    <p><strong>Number Of Students:</strong> ${product.numberofstudents}</p>
+                    <p><strong>Area:</strong> ${product.area}</p>
+                    <p><strong>Governorate:</strong> ${product.governorate}</p>
+                    <p><strong>Address:</strong> ${product.address}</p>
+                    <div id="map" style="height: 400px;"></div>
+                    <div class="quantity-selection">
+                        <button id="fulfill" style="width:200px;" onclick="proBonoSuccess()">Fulfill</button>
+                    </div>
+                `;
+                initMap(product.latitude,product.longitude);
+            }
             
             
             openModal();
         }
+        function proBonoSuccess()
+        {
+            let notification = document.getElementById("notification");
+            notification.innerHTML = "Pro-Bono Case Fulfilled Successfully!";
+            notification.classList.add("notification", "show");
+            setTimeout(function() {
+                notification.classList.remove("show");
+            }, 4000);
+            closeModal();
+        }
+        function donationSuccess()
+        {
+            let notification = document.getElementById("notification");
+            notification.innerHTML = "Donation Request Submitted Successfully!";
+            notification.classList.add("notification", "show");
+            setTimeout(function() {
+                notification.classList.remove("show");
+            }, 4000);
+            closeModal();
+        }
+        
         // Function to initialize Google Maps
             function initMap(latitude, longitude) {
                 // Create a new map centered at the hospital's location
@@ -957,6 +1116,40 @@ function filterToys() {
                 latitude: 27.180,
                 longitude: 31.183,
                 image: "./TeacherImages/bloodBagSVG.svg",
+            },
+            //Pro-Bono Cases
+            {
+                productName:"English",
+                area:"Heliopolis",
+                governorate:"Cairo",
+                numberofstudents:"10",
+                address: "12 Badee Khairy",
+                latitude: 27.180,
+                longitude: 31.183,
+                image: "./TeacherImages/englishSVG.svg",
+                category: "pro-bono"
+            },
+            {
+                productName:"Math",
+                area:"Nasr City",
+                governorate:"Cairo",
+                numberofstudents:"5",
+                address: "12 Nasr Khairy",
+                latitude: 27.180,
+                longitude: 31.183,
+                image: "./TeacherImages/mathSVG.svg",
+                category: "pro-bono"
+            },
+            {
+                productName:"Chemistry",
+                area:"Mohandessin",
+                governorate:"Asiut",
+                numberofstudents:"5",
+                address: "12 Nasr Khairy",
+                latitude: 27.180,
+                longitude: 31.183,
+                image: "./TeacherImages/chemistrySVG.svg",
+                category: "pro-bono"
             }
 
         ];
