@@ -107,8 +107,17 @@
         // Check if the email and password match expected values
         // Replace the condition with your own logic
         if (email === 'teacher@gmail.com' && password === '123') {
-            window.location.href = './DonorDashboard.html';
-        } else {
+            window.location.href = '../Teacher/TeacherDashboard.html';
+        } else if(email === 'donor@gmail.com' && password === '123')
+        {
+          window.location.href = './DonorDashboard.html';
+        }
+        else if(email === 'doctor@gmail.com' && password === '123')
+        {
+          window.location.href = '../Doctor/DoctorDashboard.html';
+        }
+        else
+        {
             alert('Invalid email or password. Please try again.');
         }
     });
