@@ -23,6 +23,16 @@
       .swipe-button:hover::before {
         left: 100%; /* End position */
       }
+      #slidingDiv {
+        width: 200px;
+        height: 100vh; /* Full height of the viewport */
+
+        position: fixed;
+        right: -200px; /* Start position off-screen */
+        top: 0;
+        transition: right 0.5s ease; /* Animation duration */
+        z-index: 1; /* Ensure the div is above the background */
+      }
     </style>
   </head>
   <body>
@@ -53,11 +63,71 @@
       />
     </div>
     <div class="px-4 sm:px-6 lg:px-8">
-      <div class="sm:flex sm:items-center">
+      <div class="sm:flex justify-between sm:items-center">
         <div class="sm:flex-auto">
           <h1 class="leading-6 text-gray-900 text-lg font-bold mt-9">
             Organizations
           </h1>
+        </div>
+        <div class="cursor-pointer mr-[20%]" id="toggleButton">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="w-5 h-5"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 0 1 .628.74v2.288a2.25 2.25 0 0 1-.659 1.59l-4.682 4.683a2.25 2.25 0 0 0-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 0 1 8 18.25v-5.757a2.25 2.25 0 0 0-.659-1.591L2.659 6.22A2.25 2.25 0 0 1 2 4.629V2.34a.75.75 0 0 1 .628-.74Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <div id="slidingDiv" class="bg-white shadow-md px-7">
+          <h1 class="text-xl my-5">Filter by:</h1>
+          <label for="" class="flex justify-center underline">Type</label>
+          <div class="flex flex-col justify-center gap-5 pt-7">
+            <div>
+              <label for="Orphanage">Orphanage:</label>
+              <input type="checkbox" id="Orphanage" name="checkbox" />
+            </div>
+
+            <div>
+              <label for="Health ">Health Sector:</label>
+              <input type="checkbox" id="Health" name="checkbox" />
+            </div>
+
+            <div>
+              <label for="School">School Sipplies:</label>
+              <input type="checkbox" id="School" name="checkbox" />
+            </div>
+          </div>
+          <label for="" class="flex justify-center pt-7 underline">Area</label>
+          <div class="flex flex-col justify-center gap-5 pt-7">
+            <div>
+              <label for="Egypt">Egypt:</label>
+              <input type="checkbox" id="Egypt" name="checkbox" />
+            </div>
+
+            <div>
+              <label for="NY ">NY:</label>
+              <input type="checkbox" id="NY" name="checkbox" />
+            </div>
+          </div>
+          <label for="" class="flex justify-center pt-7 underline"
+            >Governorate</label
+          >
+          <div class="flex flex-col justify-center gap-5 pt-7">
+            <div>
+              <label for="Brooklyn">Brooklyn:</label>
+              <input type="checkbox" id="Brooklyn" name="checkbox" />
+            </div>
+
+            <div>
+              <label for="Cairo ">Cairo:</label>
+              <input type="checkbox" id="Cairo" name="checkbox" />
+            </div>
+          </div>
         </div>
       </div>
       <div class="mt-8 flow-root">
@@ -65,7 +135,7 @@
           <div
             class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
           >
-            <table class="min-w-full divide-y divide-gray-300">
+            <table class="min-w-full divide-y divide-gray-300" id="myTable">
               <thead>
                 <tr>
                   <th
@@ -85,6 +155,12 @@
                     class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                   >
                     Status
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                  >
+                    Area/Governorate
                   </th>
                 </tr>
               </thead>
@@ -118,12 +194,17 @@
                       >Active</span
                     >
                   </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <div class="text-gray-900 text-">NY/Brooklyn</div>
+                  </td>
 
                   <td
                     class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
                   >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                      >Edit<span class="sr-only">, Lindsay Walton</span></a
+                    <a
+                      href="/public/contact1.html"
+                      class="text-indigo-600 hover:text-indigo-900"
+                      >Contact<span class="sr-only">, Lindsay Walton</span></a
                     >
                   </td>
                 </tr>
@@ -156,12 +237,16 @@
                       >InActive</span
                     >
                   </td>
-
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <div class="text-gray-900 text-">Egypt/Cairo</div>
+                  </td>
                   <td
                     class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
                   >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                      >Edit</a
+                    <a
+                      href="/public/contact2.html"
+                      class="text-indigo-600 hover:text-indigo-900"
+                      >Contact</a
                     >
                   </td>
                 </tr>
@@ -194,12 +279,17 @@
                       >Active</span
                     >
                   </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <div class="text-gray-900 text-">NY/Brooklyn</div>
+                  </td>
 
                   <td
                     class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
                   >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                      >Edit</a
+                    <a
+                      href="/public/contact3.html"
+                      class="text-indigo-600 hover:text-indigo-900"
+                      >Contact</a
                     >
                   </td>
                 </tr>
@@ -232,12 +322,16 @@
                       >Active</span
                     >
                   </td>
-
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <div class="text-gray-900 text-">NY/Brooklyn</div>
+                  </td>
                   <td
                     class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
                   >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                      >Edit</a
+                    <a
+                      href="/public/contact4.html"
+                      class="text-indigo-600 hover:text-indigo-900"
+                      >Contact</a
                     >
                   </td>
                 </tr>
@@ -270,12 +364,16 @@
                       >Active</span
                     >
                   </td>
-
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <div class="text-gray-900 text-">NY/Brooklyn</div>
+                  </td>
                   <td
                     class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
                   >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                      >Edit</a
+                    <a
+                      href="/public/contact5.html"
+                      class="text-indigo-600 hover:text-indigo-900"
+                      >Contact</a
                     >
                   </td>
                 </tr>
@@ -319,6 +417,253 @@
       </a>
     </div>
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function (checkbox) {
+          checkbox.addEventListener("change", function () {
+            const targetId = this.id;
+            // Check the id of the checkbox and perform actions accordingly
+            if (targetId === "Orphanage" && this.checked) {
+              console.log("Orphanage checkbox checked:", this.checked);
+              // Your code for Orphanage checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id.toUpperCase();
+
+                // Check if the row id is equal to "Handy Hands"
+                if (rowId === "HANDY HANDS") {
+                  // If the row id matches, display the row
+                  rows[i].style.display = "";
+                } else {
+                  // If the row id does not match, hide the row
+                  rows[i].style.display = "none";
+                }
+              }
+            } else if (targetId === "Orphanage" && !this.checked) {
+              console.log("Orphanage checkbox checked:", this.checked);
+              // Your code for Orphanage checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id.toUpperCase();
+
+                // Check if the row id is equal to "Handy Hands"
+
+                rows[i].style.display = "";
+              }
+            } else if (targetId === "Health" && this.checked) {
+              console.log("Health checkbox checked:", this.checked);
+              // Your code for Health checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id.toUpperCase();
+
+                // Check if the row id is equal to "Handy Hands"
+                if (rowId === "HEALTHY LIFE" || rowId === "EGY HEALTH LIFE") {
+                  // If the row id matches, display the row
+                  rows[i].style.display = "";
+                } else {
+                  // If the row id does not match, hide the row
+                  rows[i].style.display = "none";
+                }
+              }
+            } else if (targetId === "Health" && !this.checked) {
+              console.log("Health checkbox checked:", this.checked);
+              // Your code for Health checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id.toUpperCase();
+
+                // Check if the row id is equal to "Handy Hands"
+
+                rows[i].style.display = "";
+              }
+            } else if (targetId === "School" && this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+                if (
+                  rowId === "Better Thinking" ||
+                  rowId === "Smart Life Organization"
+                ) {
+                  // If the row id matches, display the row
+                  rows[i].style.display = "";
+                } else {
+                  // If the row id does not match, hide the row
+                  rows[i].style.display = "none";
+                }
+              }
+            } else if (targetId === "School" && !this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+
+                rows[i].style.display = "";
+              }
+            } else if (targetId === "Egypt" && this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+                if (rowId === "EGY HEALTH LIFE") {
+                  // If the row id matches, display the row
+                  rows[i].style.display = "";
+                } else {
+                  // If the row id does not match, hide the row
+                  rows[i].style.display = "none";
+                }
+              }
+            } else if (targetId === "Egypt" && !this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+
+                rows[i].style.display = "";
+              }
+            } else if (targetId === "NY" && this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+                if (rowId === "EGY HEALTH LIFE") {
+                  // If the row id matches, display the row
+                  rows[i].style.display = "none";
+                } else {
+                  // If the row id does not match, hide the row
+                  rows[i].style.display = "";
+                }
+              }
+            } else if (targetId === "NY" && !this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+
+                rows[i].style.display = "";
+              }
+            } else if (targetId === "Brooklyn" && this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+                if (rowId === "EGY HEALTH LIFE") {
+                  // If the row id matches, display the row
+                  rows[i].style.display = "none";
+                } else {
+                  // If the row id does not match, hide the row
+                  rows[i].style.display = "";
+                }
+              }
+            } else if (targetId === "Brooklyn" && !this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+
+                rows[i].style.display = "";
+              }
+            } else if (targetId === "Cairo" && this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+                if (rowId === "EGY HEALTH LIFE") {
+                  // If the row id matches, display the row
+                  rows[i].style.display = "none";
+                } else {
+                  // If the row id does not match, hide the row
+                  rows[i].style.display = "";
+                }
+              }
+            } else if (targetId === "Cairo" && !this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+
+                rows[i].style.display = "";
+              }
+            }
+          });
+        });
+      });
+    </script>
+
+    <script>
       function searchTable() {
         // Get the input element where the user types the search query
         var input = document.getElementById("searchInput");
@@ -344,6 +689,24 @@
           }
         }
       }
+    </script>
+
+    <style>
+      body.opacity-50 {
+        opacity: 0.5;
+        pointer-events: none; /* Prevents interaction with elements */
+      }
+    </style>
+    <script>
+      document
+        .getElementById("toggleButton")
+        .addEventListener("click", function () {
+          var slidingDiv = document.getElementById("slidingDiv");
+          // Toggle the right position of the sliding div
+          slidingDiv.style.right =
+            slidingDiv.style.right === "0px" ? "-200px" : "0px";
+          // Toggle the 'faded' class on the body to adjust opacity
+        });
     </script>
   </body>
 </html>
