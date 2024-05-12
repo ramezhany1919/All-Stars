@@ -14,7 +14,7 @@
         <div class="col-12">
           <div class="mb-5">
             <h2 class="display-5 fw-bold text-center">Sign in</h2>
-            <p class="text-center m-0">Don't have an account? <a href="./DonorRegisteration.html">Sign up</a></p>
+            <p class="text-center m-0">Don't have an account? <a href="./DonorRegistration.html">Sign up</a></p>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
         <div class="col-12 col-lg-10 col-xl-8">
           <div class="row gy-5 justify-content-center">
             <div class="col-12 col-lg-5">
-              <form action="#!">
+              <form action="#" id="loginForm">
                 <div class="row gy-3 overflow-hidden">
                   <div class="col-12">
                     <div class="form-floating mb-3">
@@ -97,7 +97,7 @@
     </div>
   </section>
   <script>
-    document.getElementById('').addEventListener('loginForm', function(event) {
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent form submission
 
         // Get the values entered by the user
@@ -107,8 +107,7 @@
         // Check if the email and password match expected values
         // Replace the condition with your own logic
         if (email === 'teacher@gmail.com' && password === '123') {
-            window.location.href = '../Donor/DonorDashboard.html';
-            
+            window.location.href = './DonorDashboard.html';
         } else {
             alert('Invalid email or password. Please try again.');
         }
