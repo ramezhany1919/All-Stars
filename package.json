@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-css":"tailwindcss -i ./src/styles.css -o ./public/styles.css",
-    "watch":"tailwindcss -i ./src/styles.css -o ./public/Dashboard/styles.css --watch"
+    "build-css": "tailwindcss -i ./src/styles.css -o ./public/styles.css",
+    "watch": "tailwindcss -i ./src/styles.css -o ./public/Dashboard/styles.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.4.3"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
   }
 }
