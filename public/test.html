@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+      #slidingDiv {
+        width: 200px;
+        height: 100vh; /* Full height of the viewport */
+        background-color: lightblue;
+        position: fixed;
+        right: -200px; /* Start position off-screen */
+        top: 0;
+        transition: right 0.5s ease; /* Animation duration */
+        z-index: 1; /* Ensure the div is above the background */
+      }
+
+      #toggleButton {
+        position: fixed;
+        left: 20px;
+        top: 20px;
+      }
+
+      /* Adjust the opacity of everything except the sliding div */
+      .faded {
+        opacity: 0.3; /* Adjust the opacity value as needed */
+        pointer-events: none; /* Prevent interaction with faded elements */
+      }
+    </style>
+  </head>
+  <body>
+    <button id="toggleButton">Toggle Div</button>
+    <div id="slidingDiv">This is a sliding div!</div>
+
+    <script>
+      document
+        .getElementById("toggleButton")
+        .addEventListener("click", function () {
+          var slidingDiv = document.getElementById("slidingDiv");
+          // Toggle the right position of the sliding div
+          slidingDiv.style.right =
+            slidingDiv.style.right === "0px" ? "-200px" : "0px";
+          // Toggle the 'faded' class on the body to adjust opacity
+          document.body.classList.toggle("faded");
+        });
+    </script>
+  </body>
+</html>

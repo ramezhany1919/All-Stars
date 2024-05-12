@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/public/images/background.jpeg'); /* Background image */
+    background-size: cover; /* Cover the entire background */
+}
+.logo-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 5px; /* Add padding to give some space from the edges */
+  }
+  
+  .logo-container img {
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: calc(100% - 32px); /* Adjusting for the width of buttons */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.update-btn {
+    background-color: #4caf50;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: #fff;
+}
+
+
+

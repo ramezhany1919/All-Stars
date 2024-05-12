@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pro Bono Volunteers</title>
+    <link rel="stylesheet" href="/public/Organizations/style5.css" />
+  </head>
+  <body>
+    <style>
+      .swipe-button {
+        overflow: hidden;
+      }
+      .swipe-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start position off-screen */
+        width: 100%;
+        height: 100%;
+        background-color: white; /* Color to swipe to */
+        transition: left 0.5s ease; /* Animation duration */
+      }
+
+      .swipe-button:hover::before {
+        left: 100%; /* End position */
+      }
+    </style>
+
+    <div style="position: fixed; bottom: 20px; left: 20px" class="swipe-button">
+      <a
+        href="/public/Organizations/page1.html"
+        style="
+          padding: 10px 20px;
+
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          background-color: black;
+          display: block;
+        "
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          style="width: 20px; height: 20px"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M17 4.25A2.25 2.25 0 0 0 14.75 2h-5.5A2.25 2.25 0 0 0 7 4.25v2a.75.75 0 0 0 1.5 0v-2a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1-.75-.75v-2a.75.75 0 0 0-1.5 0v2A2.25 2.25 0 0 0 9.25 18h5.5A2.25 2.25 0 0 0 17 15.75V4.25Z"
+            clip-rule="evenodd"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M14 10a.75.75 0 0 0-.75-.75H3.704l1.048-.943a.75.75 0 1 0-1.004-1.114l-2.5 2.25a.75.75 0 0 0 0 1.114l2.5 2.25a.75.75 0 1 0 1.004-1.114l-1.048-.943h9.546A.75.75 0 0 0 14 10Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </a>
+    </div>
+    <div class="logo-container">
+      <img src="/public/images/logo.png" alt="Logo" />
+    </div>
+
+    <style>
+      .swipe-button {
+        overflow: hidden;
+      }
+      .swipe-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start position off-screen */
+        width: 100%;
+        height: 100%;
+        background-color: white; /* Color to swipe to */
+        transition: left 0.5s ease; /* Animation duration */
+      }
+
+      .swipe-button:hover::before {
+        left: 100%; /* End position */
+      }
+    </style>
+    <div class="container">
+      <h1>List of Pro Bono Volunteers</h1>
+      <ul class="volunteer-list">
+        <li class="volunteer">
+          <h2>Marwan Hosny</h2>
+          <p>Type of Pro Bono: Teacher</p>
+          <p>
+            Pro Bono Fulfilled: Mentoring underprivileged students in math and
+            science.
+          </p>
+          <button class="acknowledge-btn">Send Acknowledgment</button>
+        </li>
+        <li class="volunteer">
+          <h2>Mohamed Shady</h2>
+          <p>Type of Pro Bono: Doctor</p>
+          <p>
+            Pro Bono Fulfilled: Providing medical assistance to refugees in a
+            remote area.
+          </p>
+          <button class="acknowledge-btn">Send Acknowledgment</button>
+        </li>
+        <li class="volunteer">
+          <h2>Ramez Hany</h2>
+          <p>Type of Pro Bono: Doctor</p>
+          <p>
+            Pro Bono Fulfilled: Performing free surgery to challenged patient.
+          </p>
+          <button class="acknowledge-btn">Send Acknowledgment</button>
+        </li>
+        <li class="volunteer">
+          <h2>Mohamed Hazem</h2>
+          <p>Type of Pro Bono: Teacher</p>
+          <p>
+            Pro Bono Fulfilled: Teaching private sessions to a Special-Needs
+            Student in History.
+          </p>
+          <button class="acknowledge-btn">Send Acknowledgment</button>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const acknowledgeButtons =
+          document.querySelectorAll(".acknowledge-btn");
+
+        acknowledgeButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            alert("Automated Acknowledgement email sent!");
+            button.remove(); // Remove the button after showing the alert
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
