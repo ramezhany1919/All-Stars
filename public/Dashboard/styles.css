@@ -663,6 +663,11 @@ video {
   margin-bottom: 11rem;
 }
 
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
 .my-72 {
   margin-top: 18rem;
   margin-bottom: 18rem;
@@ -701,12 +706,24 @@ video {
   margin-left: 1rem;
 }
 
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
 .ml-6 {
   margin-left: 1.5rem;
 }
 
+.ml-\[10\%\] {
+  margin-left: 10%;
+}
+
 .mr-12 {
   margin-right: 3rem;
+}
+
+.mr-\[20\%\] {
+  margin-right: 20%;
 }
 
 .mr-\[5\%\] {
@@ -731,6 +748,10 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
 }
 
 .mt-6 {
@@ -817,10 +838,6 @@ video {
   height: 100vh;
 }
 
-.h-\[50\%\] {
-  height: 50%;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -859,6 +876,10 @@ video {
 
 .w-\[25\%\] {
   width: 25%;
+}
+
+.w-\[30\%\] {
+  width: 30%;
 }
 
 .w-\[35\%\] {
@@ -907,6 +928,10 @@ video {
   animation: spin 1s linear infinite;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -945,6 +970,10 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-5 {
+  gap: 1.25rem;
 }
 
 .gap-8 {
@@ -997,6 +1026,10 @@ video {
 
 .rounded-md {
   border-radius: 0.375rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 
 .border {
@@ -1055,16 +1088,6 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-red-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
-}
-
-.bg-green-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(20 83 45 / var(--tw-bg-opacity));
 }
 
 .px-2 {
@@ -1142,6 +1165,10 @@ video {
   padding-right: 1rem;
 }
 
+.pt-7 {
+  padding-top: 1.75rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1156,6 +1183,11 @@ video {
 
 .align-middle {
   vertical-align: middle;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl {
@@ -1287,6 +1319,10 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
 .placeholder-gray-800::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(31 41 55 / var(--tw-placeholder-opacity));
@@ -1299,6 +1335,10 @@ video {
 
 .opacity-25 {
   opacity: 0.25;
+}
+
+.opacity-50 {
+  opacity: 0.5;
 }
 
 .opacity-75 {

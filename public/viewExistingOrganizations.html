@@ -105,12 +105,20 @@
           <label for="" class="flex justify-center pt-7 underline">Area</label>
           <div class="flex flex-col justify-center gap-5 pt-7">
             <div>
-              <label for="Egypt">Egypt:</label>
+              <label for="Egypt">Maamourah:</label>
               <input type="checkbox" id="Egypt" name="checkbox" />
+            </div>
+            <div>
+              <label for="Abbasia">Abbasia:</label>
+              <input type="checkbox" id="Abbasia" name="checkbox" />
+            </div>
+            <div>
+              <label for="NC">Nasr City:</label>
+              <input type="checkbox" id="NC" name="checkbox" />
             </div>
 
             <div>
-              <label for="NY ">NY:</label>
+              <label for="NY ">New Cairo:</label>
               <input type="checkbox" id="NY" name="checkbox" />
             </div>
           </div>
@@ -119,12 +127,12 @@
           >
           <div class="flex flex-col justify-center gap-5 pt-7">
             <div>
-              <label for="Brooklyn">Brooklyn:</label>
+              <label for="Brooklyn">Cairo:</label>
               <input type="checkbox" id="Brooklyn" name="checkbox" />
             </div>
 
             <div>
-              <label for="Cairo ">Cairo:</label>
+              <label for="Cairo ">Alexandria:</label>
               <input type="checkbox" id="Cairo" name="checkbox" />
             </div>
           </div>
@@ -195,7 +203,7 @@
                     >
                   </td>
                   <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                    <div class="text-gray-900 text-">NY/Brooklyn</div>
+                    <div class="text-gray-900 text-">New Cairo/Cairo</div>
                   </td>
 
                   <td
@@ -238,7 +246,7 @@
                     >
                   </td>
                   <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                    <div class="text-gray-900 text-">Egypt/Cairo</div>
+                    <div class="text-gray-900 text-">Maamourah/Alexandria</div>
                   </td>
                   <td
                     class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
@@ -280,7 +288,7 @@
                     >
                   </td>
                   <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                    <div class="text-gray-900 text-">NY/Brooklyn</div>
+                    <div class="text-gray-900 text-">New Cairo/Cairo</div>
                   </td>
 
                   <td
@@ -323,7 +331,7 @@
                     >
                   </td>
                   <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                    <div class="text-gray-900 text-">NY/Brooklyn</div>
+                    <div class="text-gray-900 text-">Abbasia/Cairo</div>
                   </td>
                   <td
                     class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
@@ -365,7 +373,7 @@
                     >
                   </td>
                   <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                    <div class="text-gray-900 text-">NY/Brooklyn</div>
+                    <div class="text-gray-900 text-">Nasr City/Cairo</div>
                   </td>
                   <td
                     class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0"
@@ -569,12 +577,15 @@
                 var rowId = rows[i].id;
 
                 // Check if the row id is equal to "Handy Hands"
-                if (rowId === "EGY HEALTH LIFE") {
+                if (
+                  rowId === "Handy Hands" ||
+                  rowId === "Smart Life Organization"
+                ) {
                   // If the row id matches, display the row
-                  rows[i].style.display = "none";
+                  rows[i].style.display = "";
                 } else {
                   // If the row id does not match, hide the row
-                  rows[i].style.display = "";
+                  rows[i].style.display = "none";
                 }
               }
             } else if (targetId === "NY" && !this.checked) {
@@ -624,6 +635,72 @@
 
                 rows[i].style.display = "";
               }
+            } else if (targetId === "NC" && this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+                if (rowId === "Better Thinking") {
+                  // If the row id matches, display the row
+                  rows[i].style.display = "";
+                } else {
+                  // If the row id does not match, hide the row
+                  rows[i].style.display = "none";
+                }
+              }
+            } else if (targetId === "NC" && !this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+
+                rows[i].style.display = "";
+              }
+            } else if (targetId === "Abbasia" && this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+                if (rowId === "Healthy Life") {
+                  // If the row id matches, display the row
+                  rows[i].style.display = "";
+                } else {
+                  // If the row id does not match, hide the row
+                  rows[i].style.display = "none";
+                }
+              }
+            } else if (targetId === "Abbasia" && !this.checked) {
+              console.log("School checkbox checked:", this.checked);
+              // Your code for School checkbox
+              var rows = document.getElementsByTagName("tr");
+
+              // Iterate over each table row
+              for (var i = 0; i < rows.length; i++) {
+                // Get the id of the current table row and convert it to uppercase
+                var rowId = rows[i].id;
+
+                // Check if the row id is equal to "Handy Hands"
+
+                rows[i].style.display = "";
+              }
             } else if (targetId === "Cairo" && this.checked) {
               console.log("School checkbox checked:", this.checked);
               // Your code for School checkbox
@@ -637,10 +714,10 @@
                 // Check if the row id is equal to "Handy Hands"
                 if (rowId === "EGY HEALTH LIFE") {
                   // If the row id matches, display the row
-                  rows[i].style.display = "none";
+                  rows[i].style.display = "";
                 } else {
                   // If the row id does not match, hide the row
-                  rows[i].style.display = "";
+                  rows[i].style.display = "none";
                 }
               }
             } else if (targetId === "Cairo" && !this.checked) {
