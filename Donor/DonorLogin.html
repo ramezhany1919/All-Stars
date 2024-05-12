@@ -14,7 +14,6 @@
         <div class="col-12">
           <div class="mb-5">
             <h2 class="display-5 fw-bold text-center">Sign in</h2>
-            <p class="text-center m-0">Don't have an account? <a href="./DonorRegistration.html">Sign up</a></p>
           </div>
         </div>
       </div>
@@ -55,8 +54,15 @@
                   </div>
                   <div class="col-12">
                     <div class="d-grid">
-                      <button class="btn btn-primary btn-lg" type="submit" >Log in</button>
-                    </div>
+                      <button class="btn btn-primary btn-lg" type="submit" style="margin-bottom: 5px; " >Log in</button>
+                      <button class="btn btn-secondary" style="font-size: larger;" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%;">Sign up</button>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
+                          <li><a class="dropdown-item" href="../Teacher/TeacherRegisteration.html">Sign up as Teacher</a></li>
+                          <li><a class="dropdown-item" href="/Donor/DonorRegistration.html">Sign up as Donor</a></li>
+                          <li><a class="dropdown-item" href="../Doctor/DoctorDashboard.html">Sign up as Doctor</a></li>
+                        </ul>
+                      </div>
+                  
                   </div>
                 </div>
               </form>
@@ -122,5 +128,7 @@
         }
     });
 </script>
+<script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
