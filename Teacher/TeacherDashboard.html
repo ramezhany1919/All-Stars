@@ -770,104 +770,164 @@ function filterToys() {
             });
         }
         function displayProductDetails(productName) {
-            let product = products.find((item) => item.productName === productName);
-            let modalContent = document.getElementById("modalContent");
-            if (product.category === "clothes") {
-                modalContent.innerHTML = `
-                    <h2>${product.productName}</h2>
-                    <img src="${product.image}" alt="${product.productName}">
-                    <p><strong>Type:</strong> ${product.type}</p>
-                    <p><strong>Age:</strong> ${product.age}</p>
-                    <p><strong>Gender:</strong> ${product.gender}</p>
-                    <p><strong>Season:</strong> ${product.season}</p>
-                    <p><strong>Material:</strong> ${product.material}</p>
-                    <p><strong>Quantity:</strong> ${product.quantity}</p>
-                    <div class="quantity-selection">
-                        <label for="quantity">Select Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
-                    </div>
-                `;
-                
-            } 
-            else if(product.category==="school-supplies" && product.categoryType==="Stationary")
-            {
-                modalContent.innerHTML = `
-                    <h2>${product.productName}</h2>
-                    <img src="${product.image}" alt="${product.productName}">
-                    <p><strong>Type:</strong> ${product.type}</p>
-                    <p><strong>Quantity:</strong> ${product.quantity}</p>
-                    <div class="quantity-selection">
-                        <label for="quantity">Select Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
-                    </div>
-                `;
-                
-            }
-            else if(product.category==="school-supplies" && product.categoryType==="Books")
-            {
-                modalContent.innerHTML = `
-                    <h2>${product.name}</h2>
-                    <img src="${product.bookImage}" alt="${product.productName}">
-                    <p><strong>Author:</strong> ${product.author}</p>
-                    <p><strong>Language:</strong> ${product.language}</p>
-                    <p><strong>Edition:</strong> ${product.edition}</p>
-                    <p><strong>Summary:</strong> ${product.summary}</p>
-                    <p><strong>Quantity:</strong> ${product.quantity}</p>
-                    <div class="quantity-selection">
-                        <label for="quantity">Select Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
-                    </div>
-                `;
-                
-            }
-            else if(product.category==="toys")
-            {
-                modalContent.innerHTML = `
-                    <h2>${product.productName}</h2>
-                    <img src="${product.image}" alt="${product.productName}">
-                    <p><strong>Type:</strong> ${product.type}</p>
-                    <p><strong>Age:</strong> ${product.age}</p>
-                    <p><strong>Gender:</strong> ${product.gender}</p>
-                    <p><strong>Cateogry:</strong> ${product.type}</p>
-                    <p><strong>Quantity:</strong> ${product.quantity}</p>
-                    <div class="quantity-selection">
-                        <label for="quantity">Select Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
-                    </div>
-                `; 
-            }
-            else if(product.category==="food")
-            {
-                modalContent.innerHTML = `
-                    <h2>${product.productName}</h2>
-                    <img src="${product.image}" alt="${product.productName}">
-                    <p><strong>Quantity:</strong> ${product.quantity}</p>
-                    <div class="quantity-selection">
-                        <label for="quantity">Select Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
-                    </div>
-                `; 
-            }
-            else if(product.category==="medical-supplies")
-            {
-                modalContent.innerHTML = `
-                    <h2>${product.productName}</h2>
-                    <img src="${product.image}" alt="${product.productName}">
-                    <p><strong>Type:</strong> ${product.categoryType}</p>
-                    <p><strong>Use:</strong> ${product.use}</p>
-                    <p><strong>Quantity:</strong> ${product.quantity}</p>
-                    <div class="quantity-selection">
-                        <label for="quantity">Select Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
-                        <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
-                    </div>
-                `; 
-            }
+        let product = products.find((item) => item.productName === productName);
+        let modalContent = document.getElementById("modalContent");
+        if (product.category === "clothes") {
+            modalContent.innerHTML = `
+                <h2>${product.productName}</h2>
+                <img src="${product.image}" alt="${product.productName}">
+                <p><strong>Type:</strong> ${product.type}</p>
+                <p><strong>Age:</strong> ${product.age}</p>
+                <p><strong>Gender:</strong> ${product.gender}</p>
+                <p><strong>Season:</strong> ${product.season}</p>
+                <p><strong>Material:</strong> ${product.material}</p>
+                <p><strong>Quantity:</strong> ${product.quantity}</p>
+                <div class="quantity-selection">
+                    <label for="quantity">Select Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                    <select id="quantity" name="pickupTime">
+                        <option>Pickup Slot:</option>
+                        <option value="Tuesday 13th April 3:45 PM">Tuesday 13th April 3:45 PM</option>
+                        <option value="Wednesday 14th April 10:00 AM">Wednesday 14th April 10:00 AM</option>
+                        <option value="Thursday 15th April 2:30 PM">Thursday 15th April 2:30 PM</option>
+                        <option value="Friday 16th April 4:00 PM">Friday 16th April 4:00 PM</option>
+                        <option value="Saturday 17th April 11:15 AM">Saturday 17th April 11:15 AM</option>
+                        <option value="Monday 19th April 1:00 PM">Monday 19th April 1:00 PM</option>
+                        <option value="Wednesday 21st April 3:30 PM">Wednesday 21st April 3:30 PM</option>
+                     </select>
+                    <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
+                </div>
+            `;
+            
+        } 
+        else if(product.category==="school-supplies" && product.categoryType==="Stationary")
+        {
+            modalContent.innerHTML = `
+                <h2>${product.productName}</h2>
+                <img src="${product.image}" alt="${product.productName}">
+                <p><strong>Type:</strong> ${product.type}</p>
+                <p><strong>Quantity:</strong> ${product.quantity}</p>
+                <div class="quantity-selection">
+                    <label for="quantity">Select Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                    <select id="quantity" name="pickupTime">
+                        <option>Pickup Slot:</option>
+                        <option value="Tuesday 13th April 3:45 PM">Tuesday 13th April 3:45 PM</option>
+                        <option value="Wednesday 14th April 10:00 AM">Wednesday 14th April 10:00 AM</option>
+                        <option value="Thursday 15th April 2:30 PM">Thursday 15th April 2:30 PM</option>
+                        <option value="Friday 16th April 4:00 PM">Friday 16th April 4:00 PM</option>
+                        <option value="Saturday 17th April 11:15 AM">Saturday 17th April 11:15 AM</option>
+                        <option value="Monday 19th April 1:00 PM">Monday 19th April 1:00 PM</option>
+                        <option value="Wednesday 21st April 3:30 PM">Wednesday 21st April 3:30 PM</option>
+                     </select>
+                    <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
+                </div>
+            `;
+            
+        }
+        else if(product.category==="school-supplies" && product.categoryType==="Books")
+        {
+            modalContent.innerHTML = `
+                <h2>${product.name}</h2>
+                <img src="${product.bookImage}" alt="${product.productName}">
+                <p><strong>Author:</strong> ${product.author}</p>
+                <p><strong>Language:</strong> ${product.language}</p>
+                <p><strong>Edition:</strong> ${product.edition}</p>
+                <p><strong>Summary:</strong> ${product.summary}</p>
+                <p><strong>Quantity:</strong> ${product.quantity}</p>
+                <div class="quantity-selection">
+                    <label for="quantity">Select Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                    <select id="quantity" name="pickupTime">
+                        <option>Pickup Slot:</option>
+                        <option value="Tuesday 13th April 3:45 PM">Tuesday 13th April 3:45 PM</option>
+                        <option value="Wednesday 14th April 10:00 AM">Wednesday 14th April 10:00 AM</option>
+                        <option value="Thursday 15th April 2:30 PM">Thursday 15th April 2:30 PM</option>
+                        <option value="Friday 16th April 4:00 PM">Friday 16th April 4:00 PM</option>
+                        <option value="Saturday 17th April 11:15 AM">Saturday 17th April 11:15 AM</option>
+                        <option value="Monday 19th April 1:00 PM">Monday 19th April 1:00 PM</option>
+                        <option value="Wednesday 21st April 3:30 PM">Wednesday 21st April 3:30 PM</option>
+                     </select>
+                    <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
+                </div>
+            `;
+            
+        }
+        else if(product.category==="toys")
+        {
+            modalContent.innerHTML = `
+                <h2>${product.productName}</h2>
+                <img src="${product.image}" alt="${product.productName}">
+                <p><strong>Type:</strong> ${product.type}</p>
+                <p><strong>Age:</strong> ${product.age}</p>
+                <p><strong>Gender:</strong> ${product.gender}</p>
+                <p><strong>Cateogry:</strong> ${product.type}</p>
+                <p><strong>Quantity:</strong> ${product.quantity}</p>
+                <div class="quantity-selection">
+                    <label for="quantity">Select Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                    <select id="quantity" name="pickupTime">
+                        <option>Pickup Slot:</option>
+                        <option value="Tuesday 13th April 3:45 PM">Tuesday 13th April 3:45 PM</option>
+                        <option value="Wednesday 14th April 10:00 AM">Wednesday 14th April 10:00 AM</option>
+                        <option value="Thursday 15th April 2:30 PM">Thursday 15th April 2:30 PM</option>
+                        <option value="Friday 16th April 4:00 PM">Friday 16th April 4:00 PM</option>
+                        <option value="Saturday 17th April 11:15 AM">Saturday 17th April 11:15 AM</option>
+                        <option value="Monday 19th April 1:00 PM">Monday 19th April 1:00 PM</option>
+                        <option value="Wednesday 21st April 3:30 PM">Wednesday 21st April 3:30 PM</option>
+                     </select>
+                    <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
+                </div>
+            `; 
+        }
+        else if(product.category==="food")
+        {
+            modalContent.innerHTML = `
+                <h2>${product.productName}</h2>
+                <img src="${product.image}" alt="${product.productName}">
+                <p><strong>Quantity:</strong> ${product.quantity}</p>
+                <div class="quantity-selection">
+                    <label for="quantity">Select Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                    <select id="quantity" name="pickupTime">
+                        <option>Pickup Slot:</option>
+                        <option value="Tuesday 13th April 3:45 PM">Tuesday 13th April 3:45 PM</option>
+                        <option value="Wednesday 14th April 10:00 AM">Wednesday 14th April 10:00 AM</option>
+                        <option value="Thursday 15th April 2:30 PM">Thursday 15th April 2:30 PM</option>
+                        <option value="Friday 16th April 4:00 PM">Friday 16th April 4:00 PM</option>
+                        <option value="Saturday 17th April 11:15 AM">Saturday 17th April 11:15 AM</option>
+                        <option value="Monday 19th April 1:00 PM">Monday 19th April 1:00 PM</option>
+                        <option value="Wednesday 21st April 3:30 PM">Wednesday 21st April 3:30 PM</option>
+                     </select>
+                    <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
+                </div>
+            `; 
+        }
+        else if(product.category==="medical-supplies")
+        {
+            modalContent.innerHTML = `
+                <h2>${product.productName}</h2>
+                <img src="${product.image}" alt="${product.productName}">
+                <p><strong>Type:</strong> ${product.categoryType}</p>
+                <p><strong>Use:</strong> ${product.use}</p>
+                <p><strong>Quantity:</strong> ${product.quantity}</p>
+                <div class="quantity-selection">
+                    <label for="quantity">Select Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="${product.quantity}">
+                    <select id="quantity" name="pickupTime">
+                        <option>Pickup Slot:</option>
+                        <option value="Tuesday 13th April 3:45 PM">Tuesday 13th April 3:45 PM</option>
+                        <option value="Wednesday 14th April 10:00 AM">Wednesday 14th April 10:00 AM</option>
+                        <option value="Thursday 15th April 2:30 PM">Thursday 15th April 2:30 PM</option>
+                        <option value="Friday 16th April 4:00 PM">Friday 16th April 4:00 PM</option>
+                        <option value="Saturday 17th April 11:15 AM">Saturday 17th April 11:15 AM</option>
+                        <option value="Monday 19th April 1:00 PM">Monday 19th April 1:00 PM</option>
+                        <option value="Wednesday 21st April 3:30 PM">Wednesday 21st April 3:30 PM</option>
+                     </select>
+                    <button id="proceedBtn" onclick="donationSuccess()">Proceed</button>
+                </div>
+            `; 
+        }
             else if(product.category==="blood-donations")
             {
                 modalContent.innerHTML = `
